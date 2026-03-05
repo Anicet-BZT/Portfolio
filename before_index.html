@@ -1,0 +1,992 @@
+<!DOCTYPE html>
+<html lang="fr" data-theme="dark"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Anicet BIZOT — Portfolio BE automatique &amp; électricité</title>
+  <meta name="description" content="Portfolio d’Anicet BIZOT — Alternant (BE automatique &amp; électricité) chez ARMOR GROUP. Projets : retrofit DCM65, instrumentation KIMO/DEBIMO, CTA, IHM.">
+  <meta name="color-scheme" content="light dark">
+  <meta property="og:title" content="Anicet BIZOT — Portfolio BE automatique &amp; électricité">
+  <meta property="og:description" content="Automatisme, IHM, régulation, Siemens/Schneider, instrumentation KIMO/DEBIMO, rétrofit.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="assets/cover.jpg">
+  <meta name="theme-color" content="#0D47A1">
+  <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="">
+  <link href="index_files/css2.css" rel="stylesheet">
+  <style>
+    :root{
+      --bg: #0b0d12;
+      --surface: #10151f;
+      --elev: #151b28;
+      --text: #e8ecf2;
+      --muted:#a8b0bf;
+      --primary:#3b82f6;
+      --primary-600:#2563eb;
+      --accent:#22d3ee;
+      --ok:#10b981;
+      --warn:#f59e0b;
+      --maxw: 1120px;
+      --radius:14px;
+      --shadow: 0 10px 30px rgba(0,0,0,.35);
+      --border:1px solid rgba(255,255,255,.08);
+    }
+    [data-theme="light"]{
+      --bg:#f7f9fc;
+      --surface:#ffffff;
+      --elev:#ffffff;
+      --text:#0f172a;
+      --muted:#475569;
+      --primary:#1d4ed8;
+      --primary-600:#1e40af;
+      --accent:#0891b2;
+      --ok:#059669;
+      --warn:#b45309;
+      --border:1px solid rgba(15,23,42,.08);
+      --shadow: 0 10px 30px rgba(2,6,23,.08);
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0;background:var(--bg);color:var(--text);font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,'Helvetica Neue',Arial}
+    a{color:var(--primary);text-decoration:none}
+    img{max-width:100%;display:block}
+    .container{max-width:var(--maxw);margin-inline:auto;padding:0 20px}
+    header{
+      position:sticky;top:0;z-index:50;background:color-mix(in srgb,var(--bg),transparent 10%);
+      backdrop-filter:saturate(180%) blur(14px);border-bottom:var(--border)
+    }
+    nav{display:flex;align-items:center;justify-content:space-between;height:64px}
+    .brand{display:flex;align-items:center;gap:12px;font-weight:800;letter-spacing:.4px}
+    .logo{
+      inline-size:34px;block-size:34px;border-radius:10px;background:linear-gradient(135deg,var(--primary),var(--accent));
+      display:grid;place-items:center;color:white;font-weight:800;box-shadow:var(--shadow)
+    }
+    .navlinks{display:flex;gap:18px;align-items:center}
+    .navlinks a{padding:8px 10px;border-radius:10px}
+    .navlinks a:hover{background:color-mix(in srgb,var(--primary) 12%, transparent)}
+    .btn,button{
+      appearance:none;border:none;background:var(--primary);color:white;padding:12px 16px;border-radius:12px;font-weight:600;cursor:pointer;
+      box-shadow:var(--shadow)
+    }
+    .btn.secondary{background:transparent;color:var(--text);border:var(--border)}
+    .btn.ghost{background:transparent;border:var(--border);color:var(--text)}
+    .theme-toggle{background:transparent;border:var(--border);color:var(--text)}
+    /* Hero */
+    .hero{position:relative;padding:72px 0 32px;background:
+      radial-gradient(800px 400px at 20% -10%, color-mix(in srgb,var(--primary) 22%, transparent) , transparent 60%),
+      radial-gradient(700px 300px at 90% 0%, color-mix(in srgb,var(--accent) 18%, transparent), transparent 60%)
+    }
+    .hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:36px;align-items:center}
+    .kicker{display:inline-flex;gap:8px;align-items:center;padding:6px 10px;border-radius:999px;border:var(--border);color:var(--muted);font-weight:600}
+    .hero h1{font-size:clamp(28px,4vw,46px);line-height:1.05;margin:14px 0 12px}
+    .hero p{color:var(--muted);font-size:1.05rem;max-width:60ch}
+    .cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:16px}
+    .hero-card{background:var(--surface);border:var(--border);border-radius:var(--radius);padding:18px;box-shadow:var(--shadow)}
+    .hero-illus{aspect-ratio:4/3;border-radius:12px;background:
+      linear-gradient(135deg,color-mix(in srgb,var(--primary) 18%,transparent),transparent),
+      linear-gradient( to bottom right, color-mix(in srgb,var(--accent) 16%,transparent), transparent),
+      linear-gradient( to top, color-mix(in srgb,var(--text) 6%,transparent), transparent);
+      display:grid;place-items:center;color:var(--muted);font-weight:600;border:var(--border)
+    }
+    /* Sections */
+    section{padding:64px 0}
+    .section-head{display:flex;justify-content:space-between;align-items:end;gap:12px;margin-bottom:28px}
+    .section-head h2{font-size:clamp(22px,3vw,32px);margin:0}
+    .muted{color:var(--muted)}
+    .grid{display:grid;gap:18px}
+    /* About */
+    .about{grid-template-columns:1.1fr .9fr}
+    .card{background:var(--surface);border:var(--border);border-radius:var(--radius);padding:20px;box-shadow:var(--shadow)}
+    .list{display:grid;gap:10px}
+    .pill{display:inline-flex;align-items:center;gap:8px;border:var(--border);padding:8px 10px;border-radius:999px;color:var(--muted);font-weight:600}
+    /* Skills */
+    .skills{grid-template-columns:repeat(4,1fr)}
+    .skill h3{margin:.2rem 0 .6rem;font-size:1.05rem}
+    .iconbox{inline-size:38px;block-size:38px;border-radius:10px;display:grid;place-items:center;
+      background:color-mix(in srgb,var(--primary) 12%, transparent);border:var(--border)}
+    .stack{display:flex;flex-wrap:wrap;gap:8px}
+    .tag{padding:6px 10px;border-radius:999px;background:color-mix(in srgb,var(--primary) 10%, transparent);
+      border:var(--border);font-weight:600;color:var(--text)}
+    /* Projects */
+    .projects{grid-template-columns:repeat(3,1fr)}
+    .proj .thumb{aspect-ratio:16/10;border-radius:12px;background:
+      linear-gradient( to bottom right, color-mix(in srgb,var(--primary) 14%,transparent), transparent 60%),
+      linear-gradient( to top left, color-mix(in srgb,var(--accent) 14%,transparent), transparent 60%); border:var(--border)}
+    .proj h3{margin:.7rem 0 .2rem}
+    .proj p{color:var(--muted)}
+    .meta{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+    /* Experience */
+    .timeline{position:relative;padding-left:20px}
+    .timeline::before{content:"";position:absolute;left:10px;top:0;bottom:0;width:2px;background:color-mix(in srgb,var(--text) 12%, transparent)}
+    .tl-item{position:relative;margin:0 0 18px 0;padding-left:12px}
+    .tl-item::marker{content:""}
+    .tl-item::before{content:"";position:absolute;left:-2px;top:.4rem;width:10px;height:10px;border-radius:50%;
+      background:var(--primary)}
+    .tl-title{font-weight:700}
+    /* Contact */
+    form{display:grid;gap:12px}
+    input,textarea{width:100%;padding:12px 14px;border-radius:12px;background:var(--elev);color:var(--text);border:var(--border)}
+    textarea{min-height:140px;resize:vertical}
+    .twocol{display:grid;gap:12px;grid-template-columns:1fr 1fr}
+    /* Footer */
+    footer{padding:28px 0;color:var(--muted);border-top:var(--border)}
+    .social{display:flex;gap:12px}
+    .social a{padding:8px 10px;border:var(--border);border-radius:10px}
+    /* Responsive */
+    @media (max-width: 960px){
+      .hero-grid,.about{grid-template-columns:1fr}
+      .skills{grid-template-columns:repeat(2,1fr)}
+      .projects{grid-template-columns:1fr 1fr}
+    }
+    @media (max-width: 640px){
+      .navlinks{display:none}
+      .skills{grid-template-columns:1fr}
+      .projects{grid-template-columns:1fr}
+      .twocol{grid-template-columns:1fr}
+    }
+    /* Focus */
+    :focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:10px}
+    /* Project interactivity */
+    .proj{transition:transform .2s ease, box-shadow .2s ease}
+    .proj:hover{transform:translateY(-2px); box-shadow: var(--shadow)}
+    .proj[role="button"]{cursor:pointer}
+
+    /* Modals */
+    .modal{position:fixed;inset:0;display:none;align-items:center;justify-content:center;background:color-mix(in srgb, var(--bg) 60%, black 40%);backdrop-filter:blur(6px);z-index:100}
+    .modal.open{display:flex}
+    .modal .dialog{background:var(--surface);border:var(--border);border-radius:16px;max-width:840px;width:92%;box-shadow:var(--shadow);padding:20px}
+    .modal .title{font-size:1.3rem;font-weight:800;margin:0 0 6px}
+    .modal .content{color:var(--muted);line-height:1.5;max-height:60vh;overflow:auto}
+    .modal .actions{display:flex;justify-content:flex-end;gap:8px;margin-top:14px}
+    .close-btn{background:transparent;border:var(--border);color:var(--text);padding:8px 12px;border-radius:10px;cursor:pointer}
+  
+    /* --- Project Modal Gallery (lightweight) --- */
+    .gallery{margin-top:14px;background:var(--surface);border:var(--border);border-radius:12px;padding:12px}
+    .gallery h4{margin:0 0 8px 0}
+    .g-viewport{position:relative;aspect-ratio:16/9;border-radius:10px;overflow:hidden;background:color-mix(in srgb,var(--text) 6%, transparent)}
+    .g-viewport img{width:100%;height:100%;object-fit:contain}
+    .g-controls{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-top:8px}
+    .g-btn{appearance:none;border:var(--border);background:transparent;border-radius:10px;padding:8px 10px;cursor:pointer;color:var(--text)}
+    .g-btn:hover{background:color-mix(in srgb,var(--primary) 12%, transparent)}
+    .g-counter{color:var(--muted);font-weight:600}
+    .g-thumbs{display:flex;gap:8px;overflow:auto;padding-top:8px}
+    .g-thumbs img{width:90px;height:56px;object-fit:cover;border-radius:8px;border:var(--border);opacity:.85;cursor:pointer;flex:0 0 auto}
+    .g-thumbs img.active{outline:2px solid var(--accent);opacity:1}
+    .g-drop{margin-top:10px;border:1.5px dashed color-mix(in srgb,var(--text) 22%, transparent);border-radius:12px;padding:12px;text-align:center;cursor:pointer}
+    .g-drop:hover{background:color-mix(in srgb,var(--primary) 10%, transparent)}
+    .g-url{width:100%;margin-top:8px;padding:10px;border-radius:10px;background:var(--elev);color:var(--text);border:var(--border)}
+    .g-empty{padding:8px 10px;border-radius:10px;border:var(--border);background:color-mix(in srgb,var(--primary) 6%, transparent);margin-top:8px}
+    
+  
+/* Hero custom photo */
+.hero-illus .hero-photo{
+  width:100%;
+  border-radius:12px;
+  aspect-ratio: 16/10;
+  object-fit: cover;
+  border: var(--border);
+  background: #dbeafe;
+}
+.hero-illus .muted{ display:block; text-align:center; margin-top:10px; font-weight:600; }
+
+  
+/* Hero custom photo */
+.hero-illus .hero-photo{
+  width:100%;
+  border-radius:12px;
+  aspect-ratio: 16/10;
+  object-fit: cover;
+  border: var(--border);
+  background: #dbeafe;
+}
+
+  
+/* -- Card cover images (thumbnails) -- */
+.card.proj[data-proj="dcm65"] .thumb{
+  background:
+    linear-gradient(to bottom right, color-mix(in srgb,var(--primary) 14%,transparent), transparent 60%),
+    linear-gradient(to top left,  color-mix(in srgb,var(--accent) 14%,transparent),  transparent 60%),
+    url('dcm5 (2).JPEG');
+  background-size: cover;
+  background-position: center;
+}
+.card.proj[data-proj="ailes"] .thumb{
+  background:
+    linear-gradient(to bottom right, color-mix(in srgb,var(--primary) 14%,transparent), transparent 60%),
+    linear-gradient(to top left,  color-mix(in srgb,var(--accent) 14%,transparent),  transparent 60%),
+    url('mesure(2).png');
+  background-size: cover;
+  background-position: center;
+}
+.card.proj[data-proj="barriere"] .thumb{
+  background:
+    linear-gradient(to bottom right, color-mix(in srgb,var(--primary) 14%,transparent), transparent 60%),
+    linear-gradient(to top left,  color-mix(in srgb,var(--accent) 14%,transparent),  transparent 60%),
+    url('train(5).jpg');
+  background-size: cover;
+  background-position: center;
+}
+
+  
+/* Covers added for S2 DTMF and Colonne lumineuse */
+.card.proj[data-proj="s2dtmf"] .thumb{
+  background:
+    linear-gradient(to bottom right, color-mix(in srgb,var(--primary) 14%,transparent), transparent 60%),
+    linear-gradient(to top left,  color-mix(in srgb,var(--accent) 14%,transparent),  transparent 60%),
+    url('dtmf (4).png');
+  background-size: cover;
+  background-position: center;
+}
+.card.proj[data-proj="tourlum"] .thumb{
+  background:
+    linear-gradient(to bottom right, color-mix(in srgb,var(--primary) 14%,transparent), transparent 60%),
+    linear-gradient(to top left,  color-mix(in srgb,var(--accent) 14%,transparent),  transparent 60%),
+    url('colonne-lumineuse-industrielle.jpg');
+  background-size: cover;
+  background-position: center;
+}
+
+  
+/* --- Hero photo (canvas.png) --- */
+.hero-illus .hero-photo{
+  display:block;
+  width:100%;
+  aspect-ratio:16/10;
+  object-fit:cover;
+  border-radius:12px;
+  border: var(--border);
+  background:#dbeafe;
+}
+
+  </style>
+  
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Anicet BIZOT",
+  "jobTitle": "Alternant — BE automatique & électricité",
+  "affiliation": {"@type":"Organization","name":"ARMOR GROUP"},
+  "alumniOf": {"@type":"CollegeOrUniversity","name":"IUT de Nantes — BUT GEII (AII)"}
+}
+</script>
+
+</head>
+<body>
+<a class="skip-link" href="#projets" style="position:absolute;left:-9999px;top:auto">Aller au contenu</a>
+
+<header>
+  <div class="container">
+    <nav aria-label="Navigation principale">
+      <div class="brand">
+        <div class="logo" aria-hidden="true">AB</div>
+        <span>Anicet BIZOT</span>
+      </div>
+      <div class="navlinks" role="menubar">
+        <a href="#accueil" role="menuitem">Accueil</a>
+        <a href="#apropos" role="menuitem">À propos</a>
+        <a href="#competences" role="menuitem">Compétences</a>
+        <a href="#projets" role="menuitem">Projets</a>
+        <a href="#experience" role="menuitem">Expérience</a>
+        <button class="theme-toggle" id="themeToggle" aria-label="Basculer thème">Thème</button>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<main id="accueil" class="hero">
+  <div class="container hero-grid">
+    <div>
+      <span class="kicker">Alternant — ARMOR GROUP</span>
+      <h1>Alternant — BE automatique &amp; électricité</h1>
+      <p>Étudiant en 2ème année de BUT Génie Électrique et Informatique 
+Industrielle (GEII), option Automatisme et Informatique Industrielle 
+(AII) à l’IUT de Nantes</p>
+      <div class="cta">
+        <a class="btn" href="CV_anglais.pdf" target="_blank" rel="noopener">Voir mon CV (EN)</a>
+        <a class="btn secondary" href="#projets">Voir mes projets</a>
+      </div>
+    </div>
+    <div class="hero-card">
+      <div class="hero-illus" aria-label="Illustration industrielle">
+        <img class="hero-photo" alt="aperçu projet / canvas" src="index_files/canvas.png">
+        <div class="muted">Anicet BIZOT</div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<section id="apropos">
+  <div class="container">
+    <div class="section-head">
+      <h2>À propos</h2>
+      <span class="muted">Parcours • Valeurs • Objectifs</span>
+    </div>
+    <div class="grid about">
+      <article class="card">
+        <p>Actuellement alternant chez ARMOR GROUP au bureau d’études 
+Automatisme &amp; Électricité, j’interviens sur le site d’enduction de 
+La Chevrolière. Je conçois et programme des systèmes automatisés, je 
+développe des IHM et je réalise des schémas électriques, de l’analyse du
+ besoin jusqu’aux tests et à la mise en service.</p>
+        <div class="stack" style="margin-top:8px">
+          <span class="pill">Rigueur</span>
+          <span class="pill">Autonomie</span>
+          <span class="pill">Esprit d’équipe</span>
+          <span class="pill">Curiosité technique</span>
+        </div>
+      </article>
+      
+    </div>
+  </div>
+</section>
+
+
+<section id="competences">
+  <div class="container">
+    <div class="section-head">
+      <h2>Compétences</h2>
+      <span class="muted">Liste simple</span>
+    </div>
+    <ul style="line-height:1.8;margin:0;padding-left:1.2rem">
+      <li><strong>Automates &amp; régulation :</strong> TIA Portal V18, STEP7,Ladder, GRAFCET.</li>
+      <li><strong>Supervision &amp; IHM :</strong>Galileo,alarmes,pop-ups,navigation.</li>
+      
+      <li><strong>Réseaux &amp; Protocoles :</strong> Profinet, Modbus TCP/IP, intégration variateurs &amp; E/S distantes, diagnostics.</li>
+      <li><strong>Électricité &amp; schémas :</strong> schéma électrique, câblage armoire/terrain, repérage &amp; tests,SEE Electrical.</li>
+      
+      <li><strong>Soft skills :</strong> autonomie, rigueur, communication terrain, travail en équipe.</li>
+      <li><strong>Langues &amp; outils :</strong> français (C2), anglais technique,suite Office, scripts Python simples.</li>
+    </ul>
+  </div>
+</section>
+
+
+<section id="projets">
+  <!-- Thumbs: dcm65 -> dcm5 (2).JPEG, ailes -> mesure(2).png, barriere -> train(5).jpg -->
+
+  <div class="container">
+    <div class="section-head">
+      <h2>Projets</h2>
+      <span class="muted">Études • Réalisations • Mises en service</span>
+    </div>
+    <div class="grid projects">
+      
+      <article class="card proj" data-proj="dcm65" aria-haspopup="dialog" aria-controls="modal-dcm65" tabindex="0" role="button">
+        <div class="thumb" role="img" aria-label="Retrofit DCM65 — ARMOR GROUP (PAPRIPACT 2025) style=" background:="" linear-gradient(to="" bottom="" right,="" color-mix(in="" srgb,var(--primary)="" 14%,transparent),="" transparent="" 60%),="" top="" left,="" srgb,var(--accent)="" url('dcm5="" (2).jpeg');="" background-size:="" cover;="" background-position:="" center;"=""></div>
+        <h3>Retrofit DCM65 — ARMOR GROUP</h3>
+        <p>
+          Modernisation d’une ligne d’enduction solvantée (PAPRIPACT 2025) : migration STEP7 → TIA Portal,
+          reprise <em>LIE</em> sur cartes de sécurité, refonte de l’IHM 16/9, ajout de pressostats d’extraction et
+          registres by‑pass interverrouillés. Documentation, essais sécurité et remise en service.
+        </p>
+        <div class="meta">
+          <span class="tag">Siemens</span><span class="tag">TIA Portal</span><span class="tag">LIE/ATEX</span><span class="tag">IHM</span>
+        </div>
+      </article>
+    
+
+      
+      <article class="card proj" data-proj="ailes" aria-haspopup="dialog" aria-controls="modal-ailes" tabindex="0" role="button">
+        <div class="thumb" role="img" aria-label="Instrumentation — Ailes de mesure (DEBIMO/KIMO) style=" background:="" linear-gradient(to="" bottom="" right,="" color-mix(in="" srgb,var(--primary)="" 14%,transparent),="" transparent="" 60%),="" top="" left,="" srgb,var(--accent)="" url('mesure(2).png');="" background-size:="" cover;="" background-position:="" center;"=""></div>
+        <h3>Instrumentation — Ailes de mesure</h3>
+        <p>
+          Intégration d’un point de mesure aéraulique pour le suivi des débits d’extraction : aile DEBIMO + PT100
+          sur boîtier <em>KIMO C310</em> (extraction racine carrée), acquisition API et supervision Historian. Études,
+          banc d’essai, refonte programme (balayage IP), mise en service et traçabilité.
+        </p>
+        <div class="meta">
+          <span class="tag">KIMO C310</span><span class="tag">DEBIMO</span><span class="tag">PT100</span>
+          <span class="tag">Ethernet/Modbus</span><span class="tag">Historian</span>
+        </div>
+      </article>
+    
+
+      
+    
+      <article class="card proj" data-proj="s2dtmf" aria-haspopup="dialog" aria-controls="modal-s2dtmf" tabindex="0" role="button">
+        <div class="thumb" role="img" aria-label="Projet S2 — FP7 DTMF (Coupe de robotique GEII)"></div>
+        <h3>Projet S2 — FP7 déverrouillage DTMF</h3>
+        <p>
+          Conception &amp; programmation de la fonction FP7 pour la Coupe de robotique GEII : déverrouillage robot via code
+          DTMF (HT9170). Étude signaux/composants, routage PCB sous KiCad, tests d’intégration.
+        </p>
+        <div class="meta">
+          <span class="tag">IUT de Nantes</span><span class="tag">C/Arduino</span><span class="tag">KiCad</span>
+        </div>
+      </article>
+
+      <article class="card proj" data-proj="barriere" aria-haspopup="dialog" aria-controls="modal-barriere" tabindex="0" role="button">
+        <div class="thumb" role="img" aria-label="Barrière de passage à niveau — détecteurs + SAMD21 style=" background:="" linear-gradient(to="" bottom="" right,="" color-mix(in="" srgb,var(--primary)="" 14%,transparent),="" transparent="" 60%),="" top="" left,="" srgb,var(--accent)="" url('train(5).jpg');="" background-size:="" cover;="" background-position:="" center;"=""></div>
+        <h3>Passage à niveau — Détecteurs &amp; automatisme</h3>
+        <p>
+          Conception d’une barrière de passage à niveau pour train miniature : PCB détecteur de présence, seconde carte
+          SAMD21, assemblage, tests, et automatisation en C. Présentation finale en anglais.
+        </p>
+        <div class="meta">
+          <span class="tag">Détection</span><span class="tag">SAMD21</span><span class="tag">C</span><span class="tag">KiCad</span>
+        </div>
+      </article>
+
+      <article class="card proj" data-proj="deeplearn" aria-haspopup="dialog" aria-controls="modal-deeplearn" tabindex="0" role="button">
+        <div class="thumb" role="img" aria-label="Vision IA — Anti‑plis film (PC Deep Learning ↔ API)"></div>
+        <h3>Vision IA — Anti‑plis film</h3>
+        <p>
+          Mise en place d’un PC de <em>deep learning</em> pour détecter/prévenir les plis sur film. Mon rôle : liaison
+          <strong>API ↔ PC</strong> via table d’échange (vitesse machine, état bobine, consignes…), handshakes et watchdog.
+        </p>
+        <div class="meta">
+          <span class="tag">Deep Learning</span><span class="tag">Table d’échange</span><span class="tag">API ↔ PC</span><span class="tag">TIA Portal</span>
+        </div>
+      </article>
+
+      <article class="card proj" data-proj="sechoirs" aria-haspopup="dialog" aria-controls="modal-sechoirs" tabindex="0" role="button">
+        <div class="thumb" role="img" aria-label="Interverrouillage séchoirs — capteurs d’ouverture"></div>
+        <h3>Interverrouillage séchoirs</h3>
+        <p>
+          Ajout de capteurs d’ouverture sur plusieurs lignes d’enduction pour empêcher la marche séchoir ouvert :
+          étude/choix capteurs, <em>schémas électriques</em>, support mécano, modifs <strong>TIA Portal</strong>, pose et tests.
+        </p>
+        <div class="meta">
+          <span class="tag">Sécurité</span><span class="tag">Capteurs</span><span class="tag">Schémas</span><span class="tag">TIA Portal</span>
+        </div>
+      </article>
+
+      <article class="card proj" data-proj="tourlum" aria-haspopup="dialog" aria-controls="modal-tourlum" tabindex="0" role="button">
+        <div class="thumb" role="img" aria-label="Colonne (tour) lumineuse — signalisation d’état"></div>
+        <h3>Colonne lumineuse (signalisation)</h3>
+        <p>
+          Installation &amp; configuration d’une <em>colonne lumineuse</em> (aussi appelée “vérine lumineuse”) : étude,
+          <em>schémas</em>, support mécano, intégration <strong>TIA Portal</strong>, câblage et validation sur ligne.
+        </p>
+        <div class="meta">
+          <span class="tag">Andon</span><span class="tag">Signalisation</span><span class="tag">24&nbsp;V</span><span class="tag">TIA Portal</span>
+        </div>
+      </article>
+</div>
+</div>
+</section>
+
+<section id="experience">
+  <div class="container">
+    <div class="section-head">
+      <h2>Expérience</h2>
+      <span class="muted">Timeline</span>
+    </div>
+    <div class="card">
+      <ol class="timeline"><li class="tl-item"><div class="tl-title">ARMOR GROUP — Alternant BE automatique &amp; électricité</div><div class="muted">2024 — Aujourd’hui</div><div>Programmation LADDER/GRAFCET TIA PORTAL/STEP7. Schéma électrique,IHM, mises en service.</div></li><li class="tl-item"><div class="tl-title">IUT de Nantes — BUT GEII (Parcours AII)</div><div class="muted">2023 — Aujourd’hui</div><div>Automatique, électricité, informatique indus, régulation, supervision.</div></li></ol>
+    </div>
+  </div>
+</section>
+<div id="modals">
+  
+  <div class="modal" id="modal-dcm65" role="dialog" aria-modal="true" aria-labelledby="title-dcm65">
+    <div class="dialog">
+      <div class="title" id="title-dcm65">Retrofit DCM65 — ARMOR GROUP (PAPRIPACT 2025)</div>
+      <div class="content">
+        <div class="muted" style="margin-bottom:6px">Ligne d’enduction solvantée • La Chevrolière (44)</div>
+        <h4>Objectifs</h4>
+        <ul>
+          <li>Traiter l’obsolescence et sécuriser la <strong>LIE</strong> (zones ATEX) ; fiabiliser l’automatisme ; améliorer l’ergonomie opérateur.</li>
+        </ul>
+        <h4>Principales réalisations</h4>
+        <ul>
+          <li><strong>Sécurité / LIE :</strong> suppression du rack LIE obsolète et reprise de la mesure sur <strong>cartes de sécurité analogiques</strong>, alarmes et arrêts coordonnés ; <em>doublage des sondes LIE « Dos »</em> avec étalonnage métrologie.</li>
+          <li><strong>Automatisme :</strong> migration <strong>STEP7 → TIA Portal</strong>, standardisation (blocs/UDT/DB), topologie PROFINET et diagnostic/alarmes homogénéisés.</li>
+          <li><strong>IHM :</strong> remplacement de l’écran principal en <strong>16/9</strong>, refonte/allègement des pages, barre latérale de navigation et aides <strong>PV/GV</strong> normalisées.</li>
+          <li><strong>Extraction :</strong> ajout de <strong>pressostats</strong> (débit minimal séchoirs) et pose de <strong>registres by‑pass interverrouillés</strong> (ventilation/portes/LIE) avec visibilité sur l’IHM.</li>
+          <li><strong>Docs &amp; maintenance :</strong> mise à jour <em>SEE Electrical</em>, repérages, archives <em>TIA</em>/<em>IHM</em>, PV d’essais et RIDA.</li>
+        </ul>
+        <h4>Contraintes &amp; organisation</h4>
+        <ul>
+          <li>Fenêtre d’arrêt d’août 2025 (~4 semaines), co‑activité 
+multi‑métiers et contraintes ATEX ; réaménagement d’armoire pour 
+intégrer les cartes sécurité ; budget cible ~50&nbsp;k€ (atterrissage 
+≈45&nbsp;k€ HT).</li>
+        </ul>
+        <div class="stack" style="margin-top:10px">
+          <span class="tag">Siemens</span><span class="tag">TIA Portal</span><span class="tag">LIE</span><span class="tag">ATEX</span>
+          <span class="tag">IHM</span><span class="tag">Profinet</span><span class="tag">Pressostats</span>
+        </div>
+
+        
+        <div class="gallery" data-key="dcm65">
+          <h4>Photos du projet</h4>
+          <div class="g-viewport"><img alt="dcm65_3" data-role="image" src="index_files/dcm5%20(4).JPEG"></div>
+          <div class="g-controls">
+            <button class="g-btn" data-action="prev" aria-label="Précédent">‹</button>
+            <div class="g-counter" data-role="counter">3 / 5</div>
+            <button class="g-btn" data-action="next" aria-label="Suivant">›</button>
+          </div>
+          <div class="g-thumbs" data-role="thumbs"><img src="index_files/dcm5%20(2).JPEG"><img src="index_files/dcm5%20(3).JPEG"><img src="index_files/dcm5%20(4).JPEG" class="active"><img src="index_files/dcm5%20(5).JPEG"><img src="index_files/dcm5.JPEG"></div>
+          <div class="g-empty muted" data-role="empty" style="display:none"></div>
+        </div>
+    
+      </div>
+      <div class="actions">
+        <button class="close-btn" data-close="">Fermer</button>
+      </div>
+    </div>
+  </div>
+
+  
+  <div class="modal" id="modal-ailes" role="dialog" aria-modal="true" aria-labelledby="title-ailes">
+    <div class="dialog">
+      <div class="title" id="title-ailes">Instrumentation — Ailes de mesure (DEBIMO / KIMO C310)</div>
+      <div class="content">
+        <div class="muted" style="margin-bottom:6px">Suivi des débits d’extraction • ARMOR GROUP</div>
+
+        <h4>Objectif</h4>
+        <ul>
+          <li>Passer de lectures ponctuelles (Pitot) à une <strong>mesure continue</strong> et tracée des débits d’air pour la sécurité (zones ATEX) et la qualité process.</li>
+        </ul>
+
+        <h4>Architecture &amp; principe</h4>
+        <ul>
+          <li><strong>Aile DEBIMO</strong> : mesure de <em>ΔP = Pt − Ps</em> ⇒ <em>V<sub>m</sub> = C<sub>m</sub> √(2ΔP/ρ)</em>, puis débit = vitesse × section.</li>
+          <li><strong>PT100 avec doigt de gant</strong> : correction de densité (ρ) et remplacement sans arrêt process.</li>
+          <li><strong>KIMO C310</strong> : acquisition PT100 + ΔP, <em>extraction racine carrée</em>, affichage local, sorties Ethernet/4‑20 mA ; envoi vers API pour centralisation et supervision.</li>
+        </ul>
+
+        <h4>Réalisation</h4>
+        <ul>
+          <li><strong>Banc de test</strong> : C310 + PT100 reliés à l’API ; simulation de débit en obturant un orifice du C310.</li>
+          <li><strong>Préparation électrique</strong> : mise à jour des plans (coffret, switch secondaire, bornier), impressions atelier.</li>
+          <li><strong>Reprise automate</strong> : refonte et <em>balayage dynamique</em> des adresses IP KIMO via un index (ajout future d’ailes simplifié).</li>
+        </ul>
+
+        <h4>Mise en service &amp; validation</h4>
+        <ul>
+          <li>Corrections terrain (inversion fils PT100), résolution d’un conflit d’ID dans l’API, validation sur MGV2/MGV3.</li>
+          <li>Point de mesure complet : deux ailes + PT100 sur gaine d’extraction, valeurs visibles en supervision.</li>
+        </ul>
+
+        <h4>Historisation &amp; traçabilité</h4>
+        <ul>
+          <li>Envoi des données vers <strong>Historian</strong> (archivage continu, &gt;5 ans), suivi hebdomadaire par le service Process avec seuils et graphes.</li>
+        </ul>
+
+        <div class="stack" style="margin-top:10px">
+          <span class="tag">KIMO C310</span><span class="tag">DEBIMO</span><span class="tag">PT100</span>
+          <span class="tag">Modbus TCP/IP</span><span class="tag">Historian</span>
+        </div>
+
+        
+        <div class="gallery" data-key="ailes">
+          <h4>Photos du projet</h4>
+          <div class="g-viewport"><img alt="ailes_1" data-role="image" src="index_files/mesure(2).png"></div>
+          <div class="g-controls">
+            <button class="g-btn" data-action="prev" aria-label="Précédent">‹</button>
+            <div class="g-counter" data-role="counter">1 / 3</div>
+            <button class="g-btn" data-action="next" aria-label="Suivant">›</button>
+          </div>
+          <div class="g-thumbs" data-role="thumbs"><img src="index_files/mesure(2).png" class="active"><img src="index_files/mesure(1).png"><img src="index_files/mesure(3).png"></div>
+          <div class="g-empty muted" data-role="empty" style="display:none"></div>
+        </div>
+    
+      </div>
+      <div class="actions"><button class="close-btn" data-close="">Fermer</button></div>
+    </div>
+  </div>
+
+  <div class="modal" id="modal-cta" role="dialog" aria-modal="true" aria-labelledby="title-cta">
+    <div class="dialog">
+      <div class="title" id="title-cta">Programmation CTA — Projet hospitalier</div>
+      <div class="content">
+        <ul>
+          <li>Boucles <strong>PI/PID</strong> (température, pression, débits) et séquences.</li>
+          <li>Supervision IHM&nbsp;: alarmes, historiques, synoptiques, navigation.</li>
+          <li>Intégration réseau <strong>BACnet</strong> (points AI/AO/BI/BO).</li>
+          <li>Tests plateforme, <strong>mise en service</strong> et réception fonctionnelle.</li>
+        </ul>
+        <div class="stack" style="margin-top:10px">
+          <span class="tag">PID</span><span class="tag">BACnet</span><span class="tag">IHM</span>
+        </div>
+      </div>
+      <div class="actions">
+        <button class="close-btn" data-close="">Fermer</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal" id="modal-s2dtmf" role="dialog" aria-modal="true" aria-labelledby="title-s2dtmf">
+    <div class="dialog">
+      <div class="title" id="title-s2dtmf">Projet S2 — FP7 déverrouillage DTMF</div>
+      <div class="content">
+        <div class="muted" style="margin-bottom:6px">févr. 2024 — juil. 2024 • IUT de Nantes</div>
+        <ul>
+          <li>Conception et programmation de la fonction de déverrouillage via code <strong>DTMF</strong> (décodage <strong>HT9170</strong>).</li>
+          <li>Étude des signaux et choix des composants, <strong>routage PCB sous KiCad</strong>.</li>
+          <li>Assemblage composants et <strong>tests unitaires</strong> pour garantir le déverrouillage.</li>
+          <li>Intégration avec le robot (détection, alimentation, etc.) et <strong>tests d’intégration</strong> réussis.</li>
+          <li>Compétences : <em>C/Arduino, électronique embarquée, mise au point, documentation</em>.</li>
+        </ul>
+        <div class="stack" style="margin-top:10px">
+          <span class="tag">C/Arduino</span><span class="tag">KiCad</span><span class="tag">HT9170</span>
+        </div>
+        
+        <div class="gallery" data-key="s2dtmf">
+          <h4>Photos / PCB DTMF</h4>
+          <div class="g-viewport"><img alt="s2dtmf_1" data-role="image" src="index_files/dtmf%20(4).png"></div>
+          <div class="g-controls">
+            <button class="g-btn" data-action="prev" aria-label="Précédent">‹</button>
+            <div class="g-counter" data-role="counter">1 / 5</div>
+            <button class="g-btn" data-action="next" aria-label="Suivant">›</button>
+          </div>
+          <div class="g-thumbs" data-role="thumbs"><img src="index_files/dtmf%20(4).png" class="active"><img src="index_files/dtmf%20(5).png"><img src="index_files/dtmf%20(3).png"><img src="index_files/dtmf%20(2).png"><img src="index_files/dtmf.png"></div>
+          <div class="g-empty muted" data-role="empty" style="display:none"></div>
+        </div>
+    
+          <div class="g-thumbs" data-role="thumbs"></div>
+          <div class="g-empty muted" data-role="empty" style="display: block;">Aucune photo ajoutée.</div>
+          <div class="g-drop" tabindex="0" role="button" aria-label="Ajouter des images">
+            Glissez-déposez des images ici ou cliquez pour choisir.
+            <input type="file" accept="image/*" multiple="" hidden="" data-role="file">
+          </div>
+          <input class="g-url" type="url" placeholder="Coller une URL d'image et appuyer sur Entrée" data-role="url">
+        </div>
+      </div>
+      <div class="actions"><button class="close-btn" data-close="">Fermer</button></div>
+    </div>
+  </div>
+
+  <div class="modal" id="modal-barriere" role="dialog" aria-modal="true" aria-labelledby="title-barriere">
+    <div class="dialog">
+      <div class="title" id="title-barriere">Passage à niveau — Détecteurs &amp; automatisme</div>
+      <div class="content">
+        <ul>
+          <li>Routage <strong>KiCad</strong> d’un PCB de détecteur de présence, <strong>pose manuelle</strong> des composants.</li>
+          <li>Conception d’une seconde carte à <strong>SAMD21</strong> pour piloter la barrière (3 détecteurs).</li>
+          <li>Automatisation en <strong>C</strong>, batterie de tests et validation sur banc.</li>
+          <li>Présentation finale <strong>en anglais</strong>.</li>
+        </ul>
+        <div class="stack" style="margin-top:10px">
+          <span class="tag">Détection</span><span class="tag">SAMD21</span><span class="tag">C</span><span class="tag">KiCad</span>
+        </div>
+
+        
+        <div class="gallery" data-key="barriere">
+          <h4>Photos du projet</h4>
+          <div class="g-viewport"><img alt="barriere_1" data-role="image" src="index_files/train(5).jpg"></div>
+          <div class="g-controls">
+            <button class="g-btn" data-action="prev" aria-label="Précédent">‹</button>
+            <div class="g-counter" data-role="counter">1 / 5</div>
+            <button class="g-btn" data-action="next" aria-label="Suivant">›</button>
+          </div>
+          <div class="g-thumbs" data-role="thumbs"><img src="index_files/train(5).jpg" class="active"><img src="index_files/train.jpg"><img src="index_files/train(2).jpg"><img src="index_files/train(3).jpg"><img src="index_files/train(4).jpg"></div>
+          <div class="g-empty muted" data-role="empty" style="display:none"></div>
+        </div>
+    
+      </div>
+      <div class="actions"><button class="close-btn" data-close="">Fermer</button></div>
+    </div>
+  </div>
+
+  <div class="modal" id="modal-deeplearn" role="dialog" aria-modal="true" aria-labelledby="title-deeplearn">
+    <div class="dialog">
+      <div class="title" id="title-deeplearn">Vision IA — Anti‑plis film (PC Deep Learning ↔ API)</div>
+      <div class="content">
+        <h4>Objectif</h4>
+        <ul>
+          <li>Réduire les plis sur film sur les machines d’enduction grâce à un modèle de <strong>deep learning</strong> exécuté sur PC industriel.</li>
+        </ul>
+        <h4>Mon rôle</h4>
+        <ul>
+          <li>Conception d’une <strong>table d’échange</strong> API ↔ PC (DB) : vitesse machine, états bobine/virole, consignes, horodatage.</li>
+          <li>Mise en place d’un <em>handshake</em> et d’un <em>watchdog</em> (PC présent / data fraîche) avec masquage des défauts en cas d’indisponibilité.</li>
+          <li>Tests banc en local puis en ligne (débits réseau, temporisations, anti-rebonds).</li>
+        </ul>
+        <h4>Résultat</h4>
+        <ul>
+          <li>Flux temps réel exploitable par l’IA ; préparation du retour d’ordres (alerte/ralenti) vers l’API.</li>
+        </ul>
+        <div class="stack" style="margin-top:10px">
+          <span class="tag">Deep Learning</span><span class="tag">API↔PC</span><span class="tag">Table d’échange</span><span class="tag">TIA Portal</span>
+        </div>
+
+        <div class="gallery" data-album="deeplearn">
+          <h4>Photos / captures</h4>
+          <div class="g-viewport"><img alt="Aperçu" data-role="image" src=""></div>
+          <div class="g-controls">
+            <button class="g-btn" data-action="prev" aria-label="Précédent">‹</button>
+            <div class="g-counter" data-role="counter">0 / 0</div>
+            <button class="g-btn" data-action="next" aria-label="Suivant">›</button>
+          </div>
+          <div class="g-thumbs" data-role="thumbs"></div>
+          <div class="g-empty muted" data-role="empty" style="display: block;">Ajoute des captures (glisser‑déposer/URL) pour illustrer l’échange.</div>
+          <div class="g-drop" tabindex="0" role="button" aria-label="Ajouter des images">
+            Glissez-déposez des images ici ou cliquez pour choisir.
+            <input type="file" accept="image/*" multiple="" hidden="" data-role="file">
+          </div>
+          <input class="g-url" type="url" placeholder="Coller une URL d'image et appuyer sur Entrée" data-role="url">
+        </div>
+      </div>
+      <div class="actions"><button class="close-btn" data-close="">Fermer</button></div>
+    </div>
+  </div>
+
+  <div class="modal" id="modal-sechoirs" role="dialog" aria-modal="true" aria-labelledby="title-sechoirs">
+    <div class="dialog">
+      <div class="title" id="title-sechoirs">Interverrouillage séchoirs — capteurs d’ouverture</div>
+      <div class="content">
+        <h4>Objectif</h4>
+        <ul>
+          <li>Empêcher le fonctionnement si un <strong>séchoir est ouvert</strong> (sécurité opérateur &amp; qualité).</li>
+        </ul>
+        <h4>Réalisation</h4>
+        <ul>
+          <li><strong>Étude &amp; choix</strong> des capteurs (fin de course / inductif selon modèle, tolérances et indice de protection).</li>
+          <li><strong>Schémas électriques</strong> (alimentation, bornier, repérage), <strong>demande de support</strong> au BE mécanique pour la fixation.</li>
+          <li><strong>Modification TIA Portal</strong> : nouvelles variables, états, alarmes et interverrouillages.</li>
+          <li><strong>Installation</strong> terrain, tests fonctionnels et mise à jour documentaire.</li>
+        </ul>
+        <h4>Résultat</h4>
+        <ul><li>Interlock robuste multi‑lignes, défauts contextualisés sur IHM, réduction des risques.</li></ul>
+        <div class="stack" style="margin-top:10px">
+          <span class="tag">Sécurité</span><span class="tag">Capteurs</span><span class="tag">Schémas</span><span class="tag">TIA Portal</span>
+        </div>
+
+        <div class="gallery" data-album="sechoirs">
+          <h4>Photos du projet</h4>
+          <div class="g-viewport"><img alt="Aperçu" data-role="image" src=""></div>
+          <div class="g-controls">
+            <button class="g-btn" data-action="prev" aria-label="Précédent">‹</button>
+            <div class="g-counter" data-role="counter">0 / 0</div>
+            <button class="g-btn" data-action="next" aria-label="Suivant">›</button>
+          </div>
+          <div class="g-thumbs" data-role="thumbs"></div>
+          <div class="g-empty muted" data-role="empty" style="display: block;">Ajoute tes photos d’installation, schémas et tests.</div>
+          <div class="g-drop" tabindex="0" role="button" aria-label="Ajouter des images">
+            Glissez-déposez des images ici ou cliquez pour choisir.
+            <input type="file" accept="image/*" multiple="" hidden="" data-role="file">
+          </div>
+          <input class="g-url" type="url" placeholder="Coller une URL d'image et appuyer sur Entrée" data-role="url">
+        </div>
+      </div>
+      <div class="actions"><button class="close-btn" data-close="">Fermer</button></div>
+    </div>
+  </div>
+
+  <div class="modal" id="modal-tourlum" role="dialog" aria-modal="true" aria-labelledby="title-tourlum">
+    <div class="dialog">
+      <div class="title" id="title-tourlum">Colonne lumineuse (a.k.a. “vérine lumineuse”)</div>
+      <div class="content">
+        <h4>Objectif</h4>
+        <ul>
+          <li>Mettre en place une <strong>signalisation d’état</strong> visible (production, alarme, arrêt, maintenance).</li>
+        </ul>
+        <h4>Réalisation</h4>
+        <ul>
+          <li><strong>Étude</strong> et choix de la tour (niveaux/couleurs, buzzer, IP, alimentation 24&nbsp;V).</li>
+          <li><strong>Schémas électriques</strong>, demande de <strong>support mécanique</strong> pour le support et la protection.</li>
+          <li><strong>Intégration TIA Portal</strong> : mappage états ↔ couleurs, clignotements, accusés d’alarme.</li>
+          <li><strong>Installation</strong>, tests et validation avec la production.</li>
+        </ul>
+        <h4>Résultat</h4>
+        <ul><li>Visibilité immédiate des états de la ligne, meilleure réactivité opérateurs/maintenance.</li></ul>
+        <div class="stack" style="margin-top:10px">
+          <span class="tag">Andon</span><span class="tag">Signalisation</span><span class="tag">24&nbsp;V</span><span class="tag">TIA Portal</span>
+        </div>
+
+        
+        <div class="gallery" data-key="tourlum">
+          <h4>Photos</h4>
+          <div class="g-viewport"><img alt="tourlum_1" data-role="image" src="index_files/colonne-lumineuse-industrielle.jpg"></div>
+          <div class="g-controls">
+            <button class="g-btn" data-action="prev" aria-label="Précédent">‹</button>
+            <div class="g-counter" data-role="counter">1 / 1</div>
+            <button class="g-btn" data-action="next" aria-label="Suivant">›</button>
+          </div>
+          <div class="g-thumbs" data-role="thumbs"><img src="index_files/colonne-lumineuse-industrielle.jpg" class="active"></div>
+          <div class="g-empty muted" data-role="empty" style="display:none"></div>
+        </div>
+    
+          <div class="g-thumbs" data-role="thumbs"></div>
+          <div class="g-empty muted" data-role="empty" style="display: block;">Ajoute photos/diagrammes pour illustrer l’installation.</div>
+          <div class="g-drop" tabindex="0" role="button" aria-label="Ajouter des images">
+            Glissez-déposez des images ici ou cliquez pour choisir.
+            <input type="file" accept="image/*" multiple="" hidden="" data-role="file">
+          </div>
+          <input class="g-url" type="url" placeholder="Coller une URL d'image et appuyer sur Entrée" data-role="url">
+        </div>
+      </div>
+      <div class="actions"><button class="close-btn" data-close="">Fermer</button></div>
+    </div>
+  
+
+
+<footer <div="" class="container" style="display:flex;justify-content:space-between;align-items:center;gap:12px">
+    <div>© <span id="year">2025</span> Anicet BIZOT. Tous droits réservés.</div>
+    <div class="muted">Construit avec HTML • CSS • JS</div>
+  
+</footer>
+
+<script>
+  // Thème
+  const themeToggle = document.getElementById('themeToggle');
+  const root = document.documentElement;
+  const saved = localStorage.getItem('theme');
+  if (saved) document.documentElement.setAttribute('data-theme', saved);
+  themeToggle?.addEventListener('click', () => {
+    const next = root.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
+    root.setAttribute('data-theme', next);
+    localStorage.setItem('theme', next);
+  });
+
+  // Année
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  // Envoi formulaire (demo locale)
+  function handleSubmit(e){
+    e.preventDefault();
+    const status = document.getElementById('formStatus');
+    status.textContent = "Merci, votre message a été préparé dans votre client mail.";
+    const nom = document.getElementById('nom').value.trim();
+    const email = document.getElementById('email').value.trim();
+    const sujet = document.getElementById('sujet').value.trim();
+    const msg = document.getElementById('message').value.trim();
+    const body = encodeURIComponent(`Nom: ${nom}\nEmail: ${email}\n\n${msg}`);
+    window.location.href = `mailto:leo.carvalho@guerven.eu?subject=${encodeURIComponent(sujet)}&body=${body}`;
+  }
+
+  // Défilement fluide
+  document.querySelectorAll('a[href^="#"]').forEach(a=>{
+    a.addEventListener('click',e=>{
+      const id = a.getAttribute('href');
+      const el = document.querySelector(id);
+      if(el){
+        e.preventDefault();
+        el.scrollIntoView({behavior:'smooth', block:'start'});
+      }
+    })
+  });
+
+  // Projets → Modales
+  const projectMap = { dcm65: 'modal-dcm65', ailes: 'modal-ailes', cta: 'modal-cta', s2dtmf: 'modal-s2dtmf', barriere: 'modal-barriere', deeplearn: 'modal-deeplearn', sechoirs: 'modal-sechoirs', tourlum: 'modal-tourlum' };
+  document.querySelectorAll('[data-proj]').forEach(card=>{
+    card.addEventListener('click', ()=> {
+      const id = projectMap[card.dataset.proj]; if(id) openModal(id);
+    });
+    card.addEventListener('keydown', (e)=>{
+      if(e.key === 'Enter' || e.key === ' '){ e.preventDefault(); const id = projectMap[card.dataset.proj]; if(id) openModal(id); }
+    });
+  });
+  function openModal(id){ const m = document.getElementById(id); if(!m) return; m.classList.add('open'); m.querySelector('[data-close]')?.focus(); document.addEventListener('keydown', escClose); }
+  function closeModal(m){ m.classList.remove('open'); document.removeEventListener('keydown', escClose); }
+  function escClose(e){ if(e.key === 'Escape'){ document.querySelectorAll('.modal.open').forEach(closeModal); } }
+  document.querySelectorAll('.modal').forEach(m=>{
+    m.addEventListener('click', (e)=>{ if(e.target === m) closeModal(m); });
+    m.querySelectorAll('[data-close]').forEach(btn=> btn.addEventListener('click', ()=> closeModal(m)));
+  });
+
+
+  </script>
+
+
+
+<script>
+// === GALERIES — AJOUTE TES PHOTOS ICI ===
+// Mets des URLs (ou des chemins vers tes fichiers dans "assets/") dans chaque tableau ci-dessous.
+// Exemple: GALLERY_IMAGES.barriere = ["assets/barriere_1.jpg","https://.../photo2.png"];
+const GALLERY_IMAGES = {
+  dcm65: ["dcm5 (2).JPEG", "dcm5 (3).JPEG", "dcm5 (4).JPEG", "dcm5 (5).JPEG", "dcm5.JPEG"],           // Retrofit — vidé comme demandé
+  ailes: ["mesure(2).png", "mesure(1).png", "mesure(3).png"],
+  s2dtmf: ["dtmf (4).png", "dtmf (5).png", "dtmf (3).png", "dtmf (2).png", "dtmf.png"],
+  barriere: ["train(5).jpg", "train.jpg", "train(2).jpg", "train(3).jpg", "train(4).jpg"],
+  deeplearn: [],
+  sechoirs: [],
+  tourlum: ["colonne-lumineuse-industrielle.jpg"]
+};
+
+(function(){
+  function run(){ document.querySelectorAll('.gallery[data-key]').forEach(setupGallery); }
+  function setupGallery(root){
+    const key = root.getAttribute('data-key');
+    const items = (GALLERY_IMAGES[key]||[]).map((src,i)=>({src, name: (key+'_'+(i+1))}));
+    const img = root.querySelector('[data-role="image"]');
+    const counter = root.querySelector('[data-role="counter"]');
+    const thumbs = root.querySelector('[data-role="thumbs"]');
+    const empty = root.querySelector('[data-role="empty"]');
+    let idx = 0;
+    function render(){
+      const n = items.length;
+      if (!n){
+        if (img) img.removeAttribute('src');
+        if (counter) counter.textContent = '0 / 0';
+        if (thumbs) thumbs.innerHTML = '';
+        if (empty){ empty.style.display='block'; empty.textContent='Ajoute des URLs dans GALLERY_IMAGES.'+key; }
+        return;
+      }
+      if (empty) empty.style.display='none';
+      if (idx<0) idx=0; if (idx>=n) idx=n-1;
+      if (img){ img.src = items[idx].src; img.alt = items[idx].name; }
+      if (counter) counter.textContent = (idx+1)+' / '+n;
+      if (thumbs){
+        thumbs.innerHTML = '';
+        items.forEach((it,i)=>{
+          const t = document.createElement('img');
+          t.src = it.src; if (i===idx) t.classList.add('active');
+          t.addEventListener('click', ()=>{ idx=i; render(); });
+          thumbs.appendChild(t);
+        });
+      }
+    }
+    const prev = root.querySelector('[data-action="prev"]');
+    const next = root.querySelector('[data-action="next"]');
+    prev && prev.addEventListener('click', ()=>{ const n=items.length; if(!n) return; idx=(idx-1+n)%n; render(); });
+    next && next.addEventListener('click', ()=>{ const n=items.length; if(!n) return; idx=(idx+1)%n; render(); });
+    render();
+  }
+  const _openModal = window.openModal;
+  window.openModal = function(id){ if (_openModal) _openModal(id); setTimeout(run, 0); };
+  document.addEventListener('DOMContentLoaded', run);
+})();
+</script>
+
+
+<script>
+const GALLERY_IMAGES = {
+  dcm65: ["dcm5 (2).JPEG","dcm5 (3).JPEG","dcm5 (4).JPEG","dcm5 (5).JPEG","dcm5.JPEG"],
+  ailes: ["mesure(2).png","mesure(1).png","mesure(3).png"],
+  s2dtmf: [],
+  barriere: ["train(5).jpg","train.jpg","train(2).jpg","train(3).jpg","train(4).jpg"],
+  deeplearn: [],
+  sechoirs: [],
+  tourlum: []
+};
+(function(){
+  function run(){ document.querySelectorAll('.gallery[data-key]').forEach(setupGallery); }
+  function setupGallery(root){
+    const key = root.getAttribute('data-key');
+    const items = (GALLERY_IMAGES[key]||[]).map((src,i)=>({src, name:key+'_'+(i+1)}));
+    const img = root.querySelector('[data-role="image"]');
+    const counter = root.querySelector('[data-role="counter"]');
+    const thumbs = root.querySelector('[data-role="thumbs"]');
+    const empty = root.querySelector('[data-role="empty"]');
+    let idx = 0;
+    function render(){
+      const n = items.length;
+      if (!n){
+        if (img) img.removeAttribute('src');
+        if (counter) counter.textContent='0 / 0';
+        if (thumbs) thumbs.innerHTML='';
+        if (empty){ empty.style.display='block'; empty.textContent="Ajoute des URLs pour '"+key+"' dans GALLERY_IMAGES."; }
+        return;
+      }
+      if (empty) empty.style.display='none';
+      if (img) { img.src = items[idx].src; img.alt = items[idx].name; }
+      if (counter) counter.textContent = (idx+1)+' / '+n;
+      if (thumbs){
+        thumbs.innerHTML='';
+        items.forEach((it,i)=>{ const t=document.createElement('img'); t.src=it.src; if(i===idx) t.classList.add('active'); t.onclick=()=>{idx=i; render();}; thumbs.appendChild(t); });
+      }
+    }
+    root.querySelector('[data-action="prev"]')?.addEventListener('click', ()=>{ const n=items.length; if(!n) return; idx=(idx-1+n)%n; render(); });
+    root.querySelector('[data-action="next"]')?.addEventListener('click', ()=>{ const n=items.length; if(!n) return; idx=(idx+1)%n; render(); });
+    render();
+  }
+  const _openModal = window.openModal;
+  window.openModal = function(id){ if (_openModal) _openModal(id); setTimeout(run, 0); };
+  document.addEventListener('DOMContentLoaded', run);
+})();
+</script>
+
+</body></html>
