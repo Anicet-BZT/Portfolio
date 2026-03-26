@@ -1,409 +1,1865 @@
 <!DOCTYPE html>
 <html lang="fr" data-theme="dark">
 <head>
-  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Anicet BIZOT — Portfolio Candidat Ingénieur CESI</title>
-  <meta name="description" content="Portfolio d’Anicet BIZOT — Candidat Cycle Ingénieur CESI. Alternant BE Automatisme & Électricité, développement TIA Portal, IHM, SEE Electrical et suivi terrain.">
+  <meta name="description" content="Portfolio d'Anicet BIZOT — Candidat Cycle Ingénieur CESI. Alternant BE Automatisme & Électricité chez ARMOR GROUP. Projets industriels : Retrofit DCM65, IHM, DTMF, Systèmes Embarqués.">
   <meta name="color-scheme" content="light dark">
-  <meta name="theme-color" content="#0D47A1">
-  <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
-  
+  <meta name="theme-color" content="#3b82f6">
+  <meta property="og:title" content="Anicet BIZOT — Portfolio Candidat Ingénieur CESI">
+  <meta property="og:description" content="Automatisme, IHM, TIA Portal, SEE Electrical, instrumentation industrielle.">
+  <meta property="og:type" content="website">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
   <style>
-    :root{
-      --bg: #0b0d12;
-      --surface: #10151f;
-      --elev: #151b28;
-      --text: #e8ecf2;
-      --muted:#a8b0bf;
-      --primary:#3b82f6;
-      --primary-600:#2563eb;
-      --accent:#22d3ee;
-      --ok:#10b981;
-      --warn:#f59e0b;
-      --maxw: 1120px;
-      --radius:14px;
-      --shadow: 0 10px 30px rgba(0,0,0,.35);
-      --border:1px solid rgba(255,255,255,.08);
+    /* =============================================
+       VARIABLES CSS
+    ============================================= */
+    :root {
+      --bg: #080b12;
+      --bg-alt: #0b0f1a;
+      --surface: #0f1624;
+      --surface-alt: #131b2e;
+      --elev: #1a2540;
+      --text: #e2e8f4;
+      --text-dim: #c8d0e0;
+      --muted: #8892a4;
+      --primary: #3b82f6;
+      --primary-light: #60a5fa;
+      --primary-dark: #1d4ed8;
+      --accent: #22d3ee;
+      --accent-dim: #0e7490;
+      --ok: #10b981;
+      --warn: #f59e0b;
+      --danger: #ef4444;
+      --purple: #a78bfa;
+      --maxw: 1140px;
+      --radius: 16px;
+      --radius-sm: 10px;
+      --radius-lg: 24px;
+      --shadow-sm: 0 4px 16px rgba(0,0,0,.3);
+      --shadow: 0 8px 32px rgba(0,0,0,.4);
+      --shadow-lg: 0 16px 56px rgba(0,0,0,.5);
+      --shadow-glow: 0 0 40px rgba(59,130,246,.15);
+      --border: 1px solid rgba(255,255,255,.07);
+      --border-focus: 1px solid var(--primary);
+      --transition: .25s cubic-bezier(.4,0,.2,1);
+      --transition-bounce: .4s cubic-bezier(.34,1.56,.64,1);
+      --font: 'Inter', system-ui, -apple-system, sans-serif;
+
+      /* Particles */
+      --particle-color: rgba(59,130,246,.4);
     }
-    [data-theme="light"]{
-      --bg:#f7f9fc;
-      --surface:#ffffff;
-      --elev:#ffffff;
-      --text:#0f172a;
-      --muted:#475569;
-      --primary:#1d4ed8;
-      --primary-600:#1e40af;
-      --accent:#0891b2;
-      --ok:#059669;
-      --warn:#b45309;
-      --border:1px solid rgba(15,23,42,.08);
-      --shadow: 0 10px 30px rgba(2,6,23,.08);
+
+    [data-theme="light"] {
+      --bg: #f0f4fc;
+      --bg-alt: #e8edf8;
+      --surface: #ffffff;
+      --surface-alt: #f8faff;
+      --elev: #ffffff;
+      --text: #0f172a;
+      --text-dim: #1e293b;
+      --muted: #475569;
+      --primary: #2563eb;
+      --primary-light: #3b82f6;
+      --primary-dark: #1e40af;
+      --accent: #0891b2;
+      --accent-dim: #164e63;
+      --ok: #059669;
+      --warn: #d97706;
+      --danger: #dc2626;
+      --purple: #7c3aed;
+      --shadow-sm: 0 4px 16px rgba(0,0,0,.06);
+      --shadow: 0 8px 32px rgba(0,0,0,.1);
+      --shadow-lg: 0 16px 56px rgba(0,0,0,.14);
+      --shadow-glow: 0 0 40px rgba(37,99,235,.1);
+      --border: 1px solid rgba(0,0,0,.08);
+      --particle-color: rgba(37,99,235,.25);
     }
-    *{box-sizing:border-box}
-    html,body{margin:0;padding:0;background:var(--bg);color:var(--text);font-family:Inter,system-ui,-apple-system,sans-serif;scroll-behavior:smooth}
-    a{color:var(--primary);text-decoration:none}
-    img{max-width:100%;display:block}
-    .container{max-width:var(--maxw);margin-inline:auto;padding:0 20px}
-    
-    /* Navbar */
-    header{position:sticky;top:0;z-index:50;background:color-mix(in srgb,var(--bg),transparent 10%);backdrop-filter:saturate(180%) blur(14px);border-bottom:var(--border)}
-    nav{display:flex;align-items:center;justify-content:space-between;height:64px}
-    .brand{display:flex;align-items:center;gap:12px;font-weight:800;letter-spacing:.4px}
-    .logo{inline-size:34px;block-size:34px;border-radius:10px;background:linear-gradient(135deg,var(--primary),var(--accent));display:grid;place-items:center;color:white;font-weight:800;box-shadow:var(--shadow)}
-    .navlinks{display:flex;gap:18px;align-items:center}
-    .navlinks a{padding:8px 10px;border-radius:10px;font-weight:600}
-    .navlinks a:hover{background:color-mix(in srgb,var(--primary) 12%, transparent)}
-    .btn,button{appearance:none;border:none;background:var(--primary);color:white;padding:12px 16px;border-radius:12px;font-weight:600;cursor:pointer;box-shadow:var(--shadow)}
-    .btn.secondary{background:transparent;color:var(--text);border:var(--border)}
-    .theme-toggle{background:transparent;border:var(--border);color:var(--text)}
 
-    /* Hero Section */
-    .hero{position:relative;padding:72px 0 32px;background:radial-gradient(800px 400px at 20% -10%, color-mix(in srgb,var(--primary) 22%, transparent) , transparent 60%),radial-gradient(700px 300px at 90% 0%, color-mix(in srgb,var(--accent) 18%, transparent), transparent 60%)}
-    .hero-grid{display:grid;grid-template-columns:1.2fr 0.8fr;gap:36px;align-items:center}
-    .kicker{display:inline-flex;gap:8px;align-items:center;padding:6px 12px;border-radius:999px;border:var(--border);color:var(--accent);font-weight:800;background:color-mix(in srgb,var(--accent) 10%, transparent)}
-    .hero h1{font-size:clamp(32px,4vw,48px);line-height:1.1;margin:14px 0 12px;font-weight:800}
-    .hero p{color:var(--muted);font-size:1.1rem;max-width:60ch;line-height:1.6}
-    .cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:24px}
-    .hero-illus img{width:100%;max-width:300px;margin:auto;border-radius:16px;border:var(--border);box-shadow:var(--shadow);object-fit:cover;aspect-ratio:1/1}
-    
-    /* Sections & Grids */
-    section{padding:72px 0}
-    .section-head{margin-bottom:36px}
-    .section-head h2{font-size:clamp(24px,3vw,36px);margin:0 0 8px 0}
-    .muted{color:var(--muted)}
-    .grid{display:grid;gap:24px}
-    .card{background:var(--surface);border:var(--border);border-radius:var(--radius);padding:24px;box-shadow:var(--shadow)}
-    
-    /* Competences / Skills */
-    .skills{grid-template-columns:repeat(auto-fit, minmax(250px, 1fr))}
-    .skill h3{margin:.2rem 0 1rem;font-size:1.1rem;display:flex;align-items:center;gap:8px}
-    .stack{display:flex;flex-wrap:wrap;gap:8px}
-    .tag{padding:6px 12px;border-radius:6px;background:color-mix(in srgb,var(--primary) 10%, transparent);border:var(--border);font-weight:600;font-size:0.9rem;color:var(--text)}
-    .tag.manage{background:color-mix(in srgb,var(--warn) 15%, transparent); color:var(--warn); border-color:color-mix(in srgb,var(--warn) 30%, transparent);}
+    /* =============================================
+       RESET & BASE
+    ============================================= */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-    /* Timeline Experience */
-    .timeline { list-style: none; padding: 0; margin: 0; position: relative; }
-    .timeline::before { content: ''; position: absolute; left: 5px; top: 8px; bottom: 0; width: 2px; background: color-mix(in srgb, var(--primary) 30%, transparent); }
-    .tl-item { position: relative; padding-left: 32px; margin-bottom: 32px; }
-    .tl-item:last-child { margin-bottom: 0; }
-    .tl-dot { position: absolute; left: 0; top: 6px; width: 12px; height: 12px; border-radius: 50%; background: var(--accent); border: 2px solid var(--surface); box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 20%, transparent); }
-    .tl-date { color: var(--primary); font-size: 0.9rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 6px; display: block; }
-    .tl-title { font-size: 1.15rem; font-weight: 700; color: var(--text); margin: 0 0 8px 0; }
-    .tl-desc { color: var(--muted); line-height: 1.6; margin: 0; }
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 72px;
+      -webkit-font-smoothing: antialiased;
+    }
 
-    /* Projects */
-    .projects{grid-template-columns:repeat(auto-fit, minmax(320px, 1fr))}
-    .proj{transition:transform .2s ease, box-shadow .2s ease; cursor:pointer; display:flex; flex-direction:column}
-    .proj:hover{transform:translateY(-4px); box-shadow: 0 15px 40px rgba(0,0,0,.4)}
-    .proj .thumb{aspect-ratio:16/9;border-radius:8px;margin-bottom:16px;background-size:cover;background-position:center;border:var(--border)}
-    .proj h3{margin:0 0 8px 0;font-size:1.2rem}
-    .proj p{color:var(--muted);font-size:0.95rem;line-height:1.5;flex-grow:1}
-    .proj-footer{margin-top:16px;padding-top:16px;border-top:var(--border);display:flex;justify-content:space-between;align-items:center;font-size:0.85rem;font-weight:600;color:var(--accent)}
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
 
-    /* Modals */
-    .modal{position:fixed;inset:0;display:none;align-items:center;justify-content:center;background:color-mix(in srgb, var(--bg) 80%, black 20%);backdrop-filter:blur(8px);z-index:100;padding:20px}
-    .modal.open{display:flex}
-    .modal .dialog{background:var(--surface);border:var(--border);border-radius:16px;max-width:900px;width:100%;max-height:90vh;display:flex;flex-direction:column;box-shadow:var(--shadow);overflow:hidden}
-    .modal-header{padding:20px 24px;border-bottom:var(--border);display:flex;justify-content:space-between;align-items:center}
-    .modal-header h3{margin:0;font-size:1.4rem}
-    .modal-body{padding:24px;overflow-y:auto;line-height:1.6;color:var(--text)}
-    .modal-body h4{color:var(--accent);margin:24px 0 8px 0;font-size:1.1rem;text-transform:uppercase;letter-spacing:1px}
-    .modal-body h4:first-child{margin-top:0}
-    .modal-body ul{padding-left:20px;margin:0 0 16px 0}
-    .modal-body li{margin-bottom:8px;color:var(--muted)}
-    .modal-body strong{color:var(--text)}
-    .modal-footer{padding:16px 24px;border-top:var(--border);display:flex;justify-content:flex-end}
-    .close-btn{background:var(--elev);border:var(--border);color:var(--text);padding:10px 20px;border-radius:8px;cursor:pointer;font-weight:600}
-    .close-btn:hover{background:var(--primary);color:white}
+    body.cursor-active { cursor: none; }
 
-    /* Gallery (Lightweight) */
-    .gallery{margin-top:24px;background:var(--elev);border:var(--border);border-radius:12px;padding:16px}
-    .g-viewport{position:relative;aspect-ratio:16/9;border-radius:8px;overflow:hidden;background:#000;display:flex;align-items:center;justify-content:center}
-    .g-viewport img{max-width:100%;max-height:100%;object-fit:contain}
-    .g-controls{display:flex;align-items:center;justify-content:space-between;margin-top:12px}
-    .g-btn{appearance:none;border:var(--border);background:var(--surface);border-radius:8px;padding:8px 16px;cursor:pointer;color:var(--text);font-weight:800}
-    .g-btn:hover{background:var(--primary);border-color:var(--primary)}
-    .g-thumbs{display:flex;gap:8px;overflow-x:auto;padding-top:12px;padding-bottom:4px}
-    .g-thumbs img{width:80px;height:50px;object-fit:cover;border-radius:6px;border:2px solid transparent;cursor:pointer;opacity:0.6;transition:all 0.2s}
-    .g-thumbs img:hover{opacity:1}
-    .g-thumbs img.active{border-color:var(--accent);opacity:1}
+    a { color: var(--primary); text-decoration: none; transition: color var(--transition); }
+    a:hover { color: var(--primary-light); }
+    a:focus-visible { outline: 2px solid var(--primary); outline-offset: 3px; border-radius: 4px; }
 
-    /* specific thumbnails backgrounds - CORRIGÉS AVEC LES BONNES EXTENSIONS */
-    [data-proj="dcm65"] .thumb { background-image: url('dcm5 (4).JPEG'); }
-    [data-proj="ailes"] .thumb { background-image: url('mesure(2).png'); }
-    [data-proj="s2dtmf"] .thumb { background-image: url('dtmf (4).png'); }
-    [data-proj="barriere"] .thumb { background-image: url('train(5).jpg'); }
+    img { max-width: 100%; display: block; }
+    button:focus-visible { outline: 2px solid var(--primary); outline-offset: 3px; }
 
-    @media (max-width: 768px){
-      .hero-grid{grid-template-columns:1fr;text-align:center}
-      .cta{justify-content:center}
-      .hero-illus img{max-width:220px}
-      .navlinks{display:none}
+    .container { max-width: var(--maxw); margin-inline: auto; padding: 0 24px; }
+
+    /* =============================================
+       CUSTOM CURSOR
+    ============================================= */
+    #cursor-dot {
+      position: fixed;
+      top: 0; left: 0;
+      width: 10px; height: 10px;
+      border-radius: 50%;
+      background: var(--primary);
+      pointer-events: none;
+      z-index: 9999;
+      transform: translate(-50%, -50%);
+      transition: width .1s, height .1s, background .2s;
+      will-change: transform;
+    }
+
+    #cursor-ring {
+      position: fixed;
+      top: 0; left: 0;
+      width: 38px; height: 38px;
+      border-radius: 50%;
+      border: 2px solid color-mix(in srgb, var(--primary) 60%, transparent);
+      pointer-events: none;
+      z-index: 9998;
+      transform: translate(-50%, -50%);
+      transition: width .25s, height .25s, border-color .25s;
+      will-change: transform;
+    }
+
+    body.cursor-hover #cursor-dot { width: 16px; height: 16px; background: var(--accent); }
+    body.cursor-hover #cursor-ring { width: 52px; height: 52px; border-color: color-mix(in srgb, var(--accent) 50%, transparent); }
+
+    @media (pointer: coarse) {
+      #cursor-dot, #cursor-ring { display: none; }
+      body.cursor-active { cursor: auto; }
+    }
+
+    /* =============================================
+       PARTICLES CANVAS
+    ============================================= */
+    #particles-canvas {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      pointer-events: none;
+      z-index: 0;
+      opacity: .7;
+    }
+
+    /* =============================================
+       ANIMATED GRADIENT BG
+    ============================================= */
+    .bg-gradient-anim {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+      background:
+        radial-gradient(ellipse 900px 700px at -10% -10%, color-mix(in srgb,var(--primary) 12%, transparent), transparent 60%),
+        radial-gradient(ellipse 700px 600px at 110% 20%, color-mix(in srgb,var(--accent) 10%, transparent), transparent 60%),
+        radial-gradient(ellipse 600px 500px at 50% 110%, color-mix(in srgb,var(--purple) 8%, transparent), transparent 60%);
+      animation: bgShift 18s ease-in-out infinite alternate;
+    }
+
+    @keyframes bgShift {
+      0%   { opacity: 1; }
+      50%  { opacity: .7; filter: hue-rotate(20deg); }
+      100% { opacity: 1; filter: hue-rotate(-10deg); }
+    }
+
+    /* Content above bg */
+    header, main, section, footer, #modals, #lightbox { position: relative; z-index: 1; }
+
+    /* =============================================
+       SCROLL ANIMATIONS
+    ============================================= */
+    .reveal {
+      opacity: 0;
+      transform: translateY(32px);
+      transition: opacity .65s var(--transition), transform .65s var(--transition);
+    }
+    .reveal.from-left  { transform: translateX(-40px); }
+    .reveal.from-right { transform: translateX(40px); }
+    .reveal.from-zoom  { transform: scale(.92); }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: none;
+    }
+
+    .reveal-delay-1 { transition-delay: .1s; }
+    .reveal-delay-2 { transition-delay: .2s; }
+    .reveal-delay-3 { transition-delay: .3s; }
+    .reveal-delay-4 { transition-delay: .4s; }
+
+    /* =============================================
+       NAVIGATION
+    ============================================= */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: color-mix(in srgb, var(--bg) 85%, transparent);
+      backdrop-filter: saturate(180%) blur(18px);
+      border-bottom: var(--border);
+      transition: background var(--transition), box-shadow var(--transition);
+    }
+
+    header.scrolled { box-shadow: var(--shadow); }
+
+    nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 68px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 800;
+      letter-spacing: .3px;
+      color: var(--text);
+      text-decoration: none;
+    }
+
+    .logo {
+      width: 36px; height: 36px;
+      border-radius: 10px;
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      display: grid;
+      place-items: center;
+      color: white;
+      font-weight: 900;
+      font-size: .9rem;
+      box-shadow: var(--shadow-glow);
+      transition: transform var(--transition-bounce), box-shadow var(--transition);
+    }
+
+    .brand:hover .logo { transform: rotate(-6deg) scale(1.08); box-shadow: 0 0 24px rgba(59,130,246,.4); }
+
+    .navlinks {
+      display: flex;
+      gap: 4px;
+      align-items: center;
+    }
+
+    .navlinks a {
+      position: relative;
+      padding: 8px 12px;
+      border-radius: 10px;
+      font-weight: 600;
+      font-size: .9rem;
+      color: var(--muted);
+      transition: color var(--transition), background var(--transition);
+    }
+
+    .navlinks a::after {
+      content: '';
+      position: absolute;
+      bottom: 3px; left: 50%;
+      transform: translateX(-50%) scaleX(0);
+      height: 2px; width: 60%;
+      background: var(--primary);
+      border-radius: 1px;
+      transition: transform var(--transition);
+    }
+
+    .navlinks a:hover,
+    .navlinks a.active {
+      color: var(--text);
+      background: color-mix(in srgb, var(--primary) 10%, transparent);
+    }
+
+    .navlinks a.active::after { transform: translateX(-50%) scaleX(1); }
+
+    .nav-actions { display: flex; gap: 8px; align-items: center; }
+
+    .btn {
+      appearance: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      border: none;
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+      color: white;
+      padding: 10px 20px;
+      border-radius: 12px;
+      font-weight: 700;
+      font-size: .9rem;
+      cursor: pointer;
+      box-shadow: var(--shadow-sm), 0 0 0 0 color-mix(in srgb, var(--primary) 40%, transparent);
+      transition: transform var(--transition-bounce), box-shadow var(--transition), filter var(--transition);
+      text-decoration: none;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow), 0 0 20px color-mix(in srgb, var(--primary) 30%, transparent);
+      filter: brightness(1.1);
+      color: white;
+    }
+
+    .btn:active { transform: translateY(0); }
+
+    .btn.secondary {
+      background: transparent;
+      color: var(--text);
+      border: var(--border);
+      box-shadow: none;
+    }
+
+    .btn.secondary:hover {
+      background: color-mix(in srgb, var(--primary) 10%, transparent);
+      border-color: var(--primary);
+      color: var(--primary-light);
+    }
+
+    .btn.ghost {
+      background: color-mix(in srgb, var(--surface) 90%, transparent);
+      border: var(--border);
+      color: var(--text);
+      padding: 8px 14px;
+    }
+
+    .theme-toggle {
+      background: transparent;
+      border: var(--border);
+      color: var(--text);
+      width: 42px; height: 42px;
+      border-radius: 12px;
+      display: grid;
+      place-items: center;
+      cursor: pointer;
+      font-size: 1.1rem;
+      transition: background var(--transition), transform var(--transition-bounce);
+    }
+
+    .theme-toggle:hover { background: color-mix(in srgb, var(--primary) 12%, transparent); transform: rotate(20deg); }
+
+    @media (max-width: 768px) {
+      .navlinks { display: none; }
+    }
+
+    /* =============================================
+       HERO
+    ============================================= */
+    .hero {
+      position: relative;
+      padding: 90px 0 60px;
+      overflow: hidden;
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 900px 500px at 0% 0%, color-mix(in srgb, var(--primary) 18%, transparent), transparent 65%),
+        radial-gradient(ellipse 700px 400px at 100% 0%, color-mix(in srgb, var(--accent) 14%, transparent), transparent 65%);
+      animation: heroBgPulse 8s ease-in-out infinite alternate;
+    }
+
+    @keyframes heroBgPulse {
+      from { opacity: .8; }
+      to   { opacity: 1; }
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.3fr 0.7fr;
+      gap: 48px;
+      align-items: center;
+    }
+
+    .kicker {
+      display: inline-flex;
+      gap: 8px;
+      align-items: center;
+      padding: 7px 14px;
+      border-radius: 999px;
+      border: var(--border);
+      color: var(--accent);
+      font-weight: 700;
+      font-size: .85rem;
+      background: color-mix(in srgb, var(--accent) 10%, transparent);
+      letter-spacing: .3px;
+      animation: kickerIn .8s var(--transition-bounce) both;
+    }
+
+    @keyframes kickerIn {
+      from { opacity: 0; transform: translateY(-16px) scale(.9); }
+      to   { opacity: 1; transform: none; }
+    }
+
+    .hero h1 {
+      font-size: clamp(32px, 4.5vw, 54px);
+      line-height: 1.08;
+      margin: 16px 0 14px;
+      font-weight: 900;
+      letter-spacing: -.5px;
+      animation: heroTitleIn .9s .15s var(--transition-bounce) both;
+    }
+
+    @keyframes heroTitleIn {
+      from { opacity: 0; transform: translateY(24px); }
+      to   { opacity: 1; transform: none; }
+    }
+
+    .hero h1 .highlight {
+      background: linear-gradient(135deg, var(--primary-light), var(--accent));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero-desc {
+      color: var(--muted);
+      font-size: 1.05rem;
+      max-width: 56ch;
+      line-height: 1.7;
+      animation: heroDescIn 1s .3s var(--transition-bounce) both;
+    }
+
+    @keyframes heroDescIn {
+      from { opacity: 0; transform: translateY(16px); }
+      to   { opacity: 1; transform: none; }
+    }
+
+    .cta {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 28px;
+      animation: ctaIn 1s .5s var(--transition-bounce) both;
+    }
+
+    @keyframes ctaIn {
+      from { opacity: 0; transform: translateY(16px); }
+      to   { opacity: 1; transform: none; }
+    }
+
+    .hero-portrait {
+      position: relative;
+      animation: portraitIn 1.2s .2s var(--transition-bounce) both;
+    }
+
+    @keyframes portraitIn {
+      from { opacity: 0; transform: scale(.85) rotateY(15deg); }
+      to   { opacity: 1; transform: none; }
+    }
+
+    .portrait-ring {
+      position: absolute;
+      inset: -12px;
+      border-radius: 26px;
+      background: linear-gradient(135deg, var(--primary), var(--accent), var(--purple));
+      opacity: .4;
+      filter: blur(20px);
+      animation: ringPulse 4s ease-in-out infinite alternate;
+    }
+
+    @keyframes ringPulse {
+      from { opacity: .3; transform: scale(.97); }
+      to   { opacity: .5; transform: scale(1.02); }
+    }
+
+    .portrait-img {
+      width: 100%;
+      max-width: 280px;
+      margin: auto;
+      border-radius: 20px;
+      border: 2px solid color-mix(in srgb, var(--primary) 30%, transparent);
+      box-shadow: var(--shadow-lg);
+      object-fit: cover;
+      aspect-ratio: 1;
+      position: relative;
+      z-index: 1;
+      transition: transform var(--transition), box-shadow var(--transition);
+    }
+
+    .hero-portrait:hover .portrait-img {
+      transform: scale(1.03) rotateY(-3deg);
+      box-shadow: 0 20px 60px rgba(0,0,0,.5);
+    }
+
+    /* Hero Stats */
+    .hero-stats {
+      display: flex;
+      gap: 24px;
+      margin-top: 32px;
+      flex-wrap: wrap;
+    }
+
+    .stat-item {
+      text-align: center;
+    }
+
+    .stat-num {
+      font-size: 1.8rem;
+      font-weight: 900;
+      color: var(--primary-light);
+      line-height: 1;
+      display: block;
+    }
+
+    .stat-label {
+      font-size: .75rem;
+      color: var(--muted);
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: .5px;
+      margin-top: 4px;
+    }
+
+    @media (max-width: 768px) {
+      .hero-grid { grid-template-columns: 1fr; text-align: center; }
+      .cta { justify-content: center; }
+      .hero-portrait { max-width: 220px; margin: auto; }
+      .hero-stats { justify-content: center; }
+      .hero-desc { margin-inline: auto; }
+      .kicker { margin-inline: auto; }
+    }
+
+    /* =============================================
+       SECTIONS
+    ============================================= */
+    section { padding: 80px 0; }
+
+    .section-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: color-mix(in srgb, var(--primary) 12%, transparent);
+      border: 1px solid color-mix(in srgb, var(--primary) 25%, transparent);
+      color: var(--primary-light);
+      font-weight: 700;
+      font-size: .78rem;
+      padding: 4px 10px;
+      border-radius: 999px;
+      letter-spacing: .4px;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+
+    .section-head h2 {
+      font-size: clamp(26px, 3.5vw, 38px);
+      font-weight: 900;
+      margin: 0 0 8px;
+      letter-spacing: -.3px;
+    }
+
+    .section-head p.muted {
+      color: var(--muted);
+      font-size: 1rem;
+    }
+
+    .section-head { margin-bottom: 40px; }
+
+    .grid { display: grid; gap: 20px; }
+
+    .card {
+      background: var(--surface);
+      border: var(--border);
+      border-radius: var(--radius);
+      padding: 24px;
+      box-shadow: var(--shadow-sm);
+      transition: border-color var(--transition), box-shadow var(--transition), transform var(--transition);
+    }
+
+    .card:hover {
+      border-color: color-mix(in srgb, var(--primary) 30%, transparent);
+      box-shadow: var(--shadow), var(--shadow-glow);
+    }
+
+    .muted { color: var(--muted); }
+
+    /* =============================================
+       ABOUT SECTION
+    ============================================= */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1.3fr .7fr;
+      gap: 24px;
+    }
+
+    .about-body {
+      font-size: 1.05rem;
+      line-height: 1.75;
+      color: var(--text-dim);
+    }
+
+    .about-body p + p { margin-top: 16px; }
+
+    .about-body strong { color: var(--text); }
+
+    .info-list { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+
+    .info-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: .95rem;
+      color: var(--text-dim);
+    }
+
+    .info-icon {
+      width: 36px; height: 36px;
+      border-radius: 10px;
+      background: color-mix(in srgb, var(--primary) 14%, transparent);
+      border: var(--border);
+      display: grid;
+      place-items: center;
+      font-size: 1rem;
+      flex-shrink: 0;
+    }
+
+    @media (max-width: 768px) { .about-grid { grid-template-columns: 1fr; } }
+
+    /* =============================================
+       SKILLS SECTION
+    ============================================= */
+    .skills-filter {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-bottom: 28px;
+    }
+
+    .filter-btn {
+      appearance: none;
+      border: var(--border);
+      background: transparent;
+      color: var(--muted);
+      padding: 7px 16px;
+      border-radius: 999px;
+      font-weight: 600;
+      font-size: .85rem;
+      cursor: pointer;
+      transition: all var(--transition);
+    }
+
+    .filter-btn:hover {
+      border-color: var(--primary);
+      color: var(--primary-light);
+      background: color-mix(in srgb, var(--primary) 8%, transparent);
+    }
+
+    .filter-btn.active {
+      background: var(--primary);
+      border-color: var(--primary);
+      color: white;
+    }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 20px;
+    }
+
+    .skill-card {
+      transition: opacity var(--transition), transform var(--transition);
+    }
+
+    .skill-card.hidden {
+      display: none;
+    }
+
+    .skill-card h3 {
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: 14px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .stack { display: flex; flex-wrap: wrap; gap: 8px; }
+
+    .tag {
+      padding: 5px 12px;
+      border-radius: 8px;
+      background: color-mix(in srgb, var(--primary) 10%, transparent);
+      border: 1px solid color-mix(in srgb, var(--primary) 20%, transparent);
+      font-weight: 600;
+      font-size: .82rem;
+      color: var(--text-dim);
+      transition: all var(--transition);
+    }
+
+    .tag:hover {
+      background: color-mix(in srgb, var(--primary) 20%, transparent);
+      color: var(--text);
+      transform: translateY(-1px);
+    }
+
+    .tag.manage {
+      background: color-mix(in srgb, var(--warn) 12%, transparent);
+      border-color: color-mix(in srgb, var(--warn) 25%, transparent);
+      color: var(--warn);
+    }
+
+    .tag.soft {
+      background: color-mix(in srgb, var(--ok) 10%, transparent);
+      border-color: color-mix(in srgb, var(--ok) 20%, transparent);
+      color: var(--ok);
+    }
+
+    .tag.accent-tag {
+      background: color-mix(in srgb, var(--accent) 10%, transparent);
+      border-color: color-mix(in srgb, var(--accent) 20%, transparent);
+      color: var(--accent);
+    }
+
+    /* =============================================
+       TIMELINE / EXPERIENCE
+    ============================================= */
+    .timeline {
+      list-style: none;
+      position: relative;
+      padding-left: 0;
+    }
+
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 16px;
+      top: 0; bottom: 0;
+      width: 2px;
+      background: linear-gradient(to bottom, var(--primary), var(--accent), transparent);
+    }
+
+    .tl-item {
+      position: relative;
+      padding-left: 52px;
+      padding-bottom: 40px;
+    }
+
+    .tl-item:last-child { padding-bottom: 0; }
+
+    .tl-dot {
+      position: absolute;
+      left: 8px;
+      top: 4px;
+      width: 18px; height: 18px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      border: 3px solid var(--bg);
+      box-shadow: 0 0 0 3px color-mix(in srgb, var(--primary) 25%, transparent), 0 0 16px color-mix(in srgb, var(--primary) 30%, transparent);
+      transition: transform var(--transition-bounce), box-shadow var(--transition);
+    }
+
+    .tl-item:hover .tl-dot {
+      transform: scale(1.3);
+      box-shadow: 0 0 0 4px color-mix(in srgb, var(--accent) 35%, transparent), 0 0 24px color-mix(in srgb, var(--accent) 40%, transparent);
+    }
+
+    .tl-date {
+      display: inline-block;
+      color: var(--primary-light);
+      font-size: .82rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .5px;
+      margin-bottom: 6px;
+      background: color-mix(in srgb, var(--primary) 10%, transparent);
+      border: 1px solid color-mix(in srgb, var(--primary) 20%, transparent);
+      padding: 2px 8px;
+      border-radius: 4px;
+    }
+
+    .tl-title {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--text);
+      margin: 0 0 8px;
+      line-height: 1.4;
+    }
+
+    .tl-desc {
+      color: var(--muted);
+      line-height: 1.65;
+      font-size: .95rem;
+    }
+
+    /* =============================================
+       PROJECTS SECTION
+    ============================================= */
+    .projects-controls {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 28px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    .search-box {
+      position: relative;
+      flex: 1;
+      min-width: 220px;
+    }
+
+    .search-box input {
+      width: 100%;
+      background: var(--surface);
+      border: var(--border);
+      border-radius: 12px;
+      color: var(--text);
+      padding: 10px 16px 10px 40px;
+      font-size: .9rem;
+      font-family: var(--font);
+      transition: border-color var(--transition), box-shadow var(--transition);
+      outline: none;
+    }
+
+    .search-box input:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px color-mix(in srgb, var(--primary) 15%, transparent);
+    }
+
+    .search-box input::placeholder { color: var(--muted); }
+
+    .search-icon {
+      position: absolute;
+      left: 12px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--muted);
+      pointer-events: none;
+    }
+
+    .proj-filters { display: flex; gap: 8px; flex-wrap: wrap; }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 24px;
+    }
+
+    .proj-card {
+      background: var(--surface);
+      border: var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      box-shadow: var(--shadow-sm);
+      transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition), opacity var(--transition);
+      transform-style: preserve-3d;
+      perspective: 800px;
+    }
+
+    .proj-card:hover {
+      transform: translateY(-8px) rotateX(2deg) rotateY(-1deg);
+      box-shadow: var(--shadow-lg), 0 0 40px color-mix(in srgb, var(--primary) 15%, transparent);
+      border-color: color-mix(in srgb, var(--primary) 35%, transparent);
+    }
+
+    .proj-card.hidden { display: none; }
+
+    .proj-thumb {
+      aspect-ratio: 16/9;
+      background-size: cover;
+      background-position: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .proj-thumb::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, color-mix(in srgb, var(--surface) 60%, transparent), transparent);
+      opacity: 0;
+      transition: opacity var(--transition);
+    }
+
+    .proj-card:hover .proj-thumb::after { opacity: 1; }
+
+    .proj-thumb-overlay {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transition: opacity var(--transition);
+      z-index: 2;
+    }
+
+    .proj-card:hover .proj-thumb-overlay { opacity: 1; }
+
+    .proj-thumb-overlay span {
+      background: color-mix(in srgb, var(--primary) 90%, black 10%);
+      color: white;
+      padding: 8px 18px;
+      border-radius: 999px;
+      font-weight: 700;
+      font-size: .85rem;
+      backdrop-filter: blur(8px);
+    }
+
+    .proj-body { padding: 20px; flex: 1; display: flex; flex-direction: column; }
+
+    .proj-header { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 10px; }
+
+    .proj-title { font-size: 1.1rem; font-weight: 700; line-height: 1.35; flex: 1; }
+
+    .proj-badge {
+      display: inline-block;
+      padding: 3px 9px;
+      border-radius: 999px;
+      font-size: .7rem;
+      font-weight: 700;
+      letter-spacing: .3px;
+      text-transform: uppercase;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .badge-new {
+      background: linear-gradient(135deg, var(--ok), #059669);
+      color: white;
+    }
+
+    .badge-featured {
+      background: linear-gradient(135deg, var(--warn), #d97706);
+      color: white;
+    }
+
+    .badge-rd {
+      background: linear-gradient(135deg, var(--purple), #7c3aed);
+      color: white;
+    }
+
+    .proj-desc {
+      color: var(--muted);
+      font-size: .9rem;
+      line-height: 1.6;
+      flex: 1;
+    }
+
+    .proj-footer {
+      margin-top: 18px;
+      padding-top: 14px;
+      border-top: var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .proj-cat {
+      font-size: .78rem;
+      font-weight: 700;
+      color: var(--accent);
+      letter-spacing: .3px;
+      text-transform: uppercase;
+    }
+
+    .proj-link {
+      font-size: .85rem;
+      font-weight: 700;
+      color: var(--primary-light);
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      transition: gap var(--transition);
+    }
+
+    .proj-card:hover .proj-link { gap: 8px; }
+
+    /* =============================================
+       MODALS
+    ============================================= */
+    .modal {
+      position: fixed;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: color-mix(in srgb, var(--bg) 85%, black 15%);
+      backdrop-filter: blur(12px);
+      z-index: 200;
+      padding: 20px;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity .25s ease;
+    }
+
+    .modal.open {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .dialog {
+      background: var(--surface);
+      border: var(--border);
+      border-radius: var(--radius-lg);
+      max-width: 920px;
+      width: 100%;
+      max-height: 90vh;
+      display: flex;
+      flex-direction: column;
+      box-shadow: var(--shadow-lg);
+      overflow: hidden;
+      transform: scale(.92) translateY(20px);
+      transition: transform .3s var(--transition-bounce);
+    }
+
+    .modal.open .dialog {
+      transform: scale(1) translateY(0);
+    }
+
+    .modal-header {
+      padding: 22px 28px;
+      border-bottom: var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: var(--surface-alt);
+    }
+
+    .modal-header h3 {
+      font-size: 1.3rem;
+      font-weight: 800;
+      margin: 0;
+    }
+
+    .close-btn {
+      appearance: none;
+      background: var(--elev);
+      border: var(--border);
+      color: var(--text);
+      width: 36px; height: 36px;
+      border-radius: 10px;
+      cursor: pointer;
+      font-size: 1rem;
+      display: grid;
+      place-items: center;
+      transition: background var(--transition), transform var(--transition-bounce);
+    }
+
+    .close-btn:hover { background: var(--danger); color: white; transform: rotate(90deg); }
+
+    .modal-body {
+      padding: 28px;
+      overflow-y: auto;
+      line-height: 1.65;
+      color: var(--text-dim);
+      flex: 1;
+    }
+
+    .modal-body h4 {
+      color: var(--accent);
+      margin: 28px 0 10px;
+      font-size: .9rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .modal-body h4:first-child { margin-top: 0; }
+
+    .modal-body ul {
+      padding-left: 18px;
+      margin-bottom: 8px;
+    }
+
+    .modal-body li { margin-bottom: 8px; color: var(--muted); }
+    .modal-body strong { color: var(--text); }
+
+    /* =============================================
+       GALLERY & LIGHTBOX
+    ============================================= */
+    .gallery {
+      margin-top: 24px;
+      background: var(--bg-alt);
+      border: var(--border);
+      border-radius: var(--radius);
+      padding: 16px;
+    }
+
+    .g-viewport {
+      position: relative;
+      aspect-ratio: 16/9;
+      border-radius: 10px;
+      overflow: hidden;
+      background: #000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: zoom-in;
+    }
+
+    .g-viewport img {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+      transition: transform var(--transition);
+      loading: lazy;
+    }
+
+    .g-viewport:hover img { transform: scale(1.02); }
+
+    .g-zoom-hint {
+      position: absolute;
+      bottom: 10px; right: 10px;
+      background: rgba(0,0,0,.6);
+      color: white;
+      font-size: .75rem;
+      font-weight: 600;
+      padding: 4px 10px;
+      border-radius: 6px;
+      opacity: 0;
+      transition: opacity var(--transition);
+    }
+
+    .g-viewport:hover .g-zoom-hint { opacity: 1; }
+
+    .g-controls {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: 12px;
+    }
+
+    .g-btn {
+      appearance: none;
+      border: var(--border);
+      background: var(--surface);
+      border-radius: 8px;
+      padding: 7px 16px;
+      cursor: pointer;
+      color: var(--text);
+      font-weight: 700;
+      font-size: .9rem;
+      transition: all var(--transition);
+    }
+
+    .g-btn:hover { background: var(--primary); border-color: var(--primary); color: white; }
+
+    .g-thumbs {
+      display: flex;
+      gap: 8px;
+      overflow-x: auto;
+      padding: 12px 0 4px;
+      scrollbar-width: thin;
+    }
+
+    .g-thumbs img {
+      width: 80px; height: 50px;
+      object-fit: cover;
+      border-radius: 6px;
+      border: 2px solid transparent;
+      cursor: pointer;
+      opacity: .55;
+      transition: all var(--transition);
+      flex-shrink: 0;
+    }
+
+    .g-thumbs img:hover { opacity: .85; transform: scale(1.05); }
+    .g-thumbs img.active { border-color: var(--accent); opacity: 1; }
+
+    /* Lightbox */
+    #lightbox {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,.95);
+      z-index: 300;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity .2s ease;
+      padding: 20px;
+    }
+
+    #lightbox.open {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    #lightbox img {
+      max-width: 100%;
+      max-height: 90vh;
+      object-fit: contain;
+      border-radius: 8px;
+      box-shadow: 0 0 80px rgba(0,0,0,.8);
+      transform: scale(.9);
+      transition: transform .3s var(--transition-bounce);
+    }
+
+    #lightbox.open img { transform: scale(1); }
+
+    #lightbox-close {
+      position: absolute;
+      top: 20px; right: 20px;
+      background: rgba(255,255,255,.1);
+      border: 1px solid rgba(255,255,255,.2);
+      color: white;
+      width: 44px; height: 44px;
+      border-radius: 12px;
+      font-size: 1.2rem;
+      cursor: pointer;
+      display: grid;
+      place-items: center;
+      transition: background var(--transition), transform var(--transition-bounce);
+    }
+
+    #lightbox-close:hover { background: var(--danger); transform: rotate(90deg); }
+
+    #lightbox-counter {
+      position: absolute;
+      bottom: 20px; left: 50%;
+      transform: translateX(-50%);
+      color: rgba(255,255,255,.7);
+      font-size: .85rem;
+      font-weight: 600;
+      background: rgba(0,0,0,.5);
+      padding: 6px 14px;
+      border-radius: 999px;
+    }
+
+    /* =============================================
+       SKILLS PROGRESS BARS
+    ============================================= */
+    .skill-bar-wrap { margin-top: 6px; }
+
+    .skill-bar-label {
+      display: flex;
+      justify-content: space-between;
+      font-size: .78rem;
+      font-weight: 600;
+      color: var(--muted);
+      margin-bottom: 5px;
+    }
+
+    .skill-bar {
+      height: 5px;
+      border-radius: 3px;
+      background: color-mix(in srgb, var(--primary) 12%, transparent);
+      overflow: hidden;
+    }
+
+    .skill-bar-fill {
+      height: 100%;
+      border-radius: 3px;
+      background: linear-gradient(90deg, var(--primary), var(--accent));
+      width: 0;
+      transition: width 1.2s cubic-bezier(.4,0,.2,1);
+    }
+
+    /* =============================================
+       STATS COUNTER SECTION
+    ============================================= */
+    .stats-section {
+      padding: 60px 0;
+      background: var(--surface);
+      border-top: var(--border);
+      border-bottom: var(--border);
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 28px;
+      text-align: center;
+    }
+
+    .stat-card {
+      padding: 24px 16px;
+      border-radius: var(--radius);
+      background: var(--surface-alt);
+      border: var(--border);
+      transition: transform var(--transition-bounce), box-shadow var(--transition);
+    }
+
+    .stat-card:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--shadow), var(--shadow-glow);
+    }
+
+    .stat-card .num {
+      font-size: 2.4rem;
+      font-weight: 900;
+      color: var(--primary-light);
+      line-height: 1;
+      display: block;
+    }
+
+    .stat-card .suffix {
+      font-size: 1.4rem;
+      font-weight: 900;
+      color: var(--accent);
+    }
+
+    .stat-card .lbl {
+      font-size: .8rem;
+      font-weight: 700;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: .5px;
+      margin-top: 8px;
+    }
+
+    /* =============================================
+       FOOTER
+    ============================================= */
+    footer {
+      border-top: var(--border);
+      padding: 40px 0;
+      margin-top: 80px;
+      color: var(--muted);
+      text-align: center;
+      font-size: .9rem;
+    }
+
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin-bottom: 16px;
+      flex-wrap: wrap;
+    }
+
+    .footer-links a {
+      color: var(--muted);
+      transition: color var(--transition);
+    }
+
+    .footer-links a:hover { color: var(--primary-light); }
+
+    /* =============================================
+       THUMB BACKGROUNDS
+    ============================================= */
+    [data-proj="dcm65"] .proj-thumb { background-image: url('dcm5 (4).JPEG'); }
+    [data-proj="ailes"]  .proj-thumb { background-image: url('mesure(2).png'); }
+    [data-proj="s2dtmf"] .proj-thumb { background-image: url('dtmf (4).png'); }
+    [data-proj="barriere"] .proj-thumb { background-image: url('train(5).jpg'); }
+
+    /* =============================================
+       RESPONSIVE
+    ============================================= */
+    @media (max-width: 600px) {
+      .btn { padding: 9px 16px; font-size: .85rem; }
+      .stats-grid { grid-template-columns: repeat(2, 1fr); }
+      .projects-grid { grid-template-columns: 1fr; }
+    }
+
+    /* Accessibility: reduced motion */
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: .01ms !important;
+      }
+      .reveal { opacity: 1 !important; transform: none !important; }
     }
   </style>
 </head>
+
 <body>
 
-<header>
+<!-- Animated gradient background -->
+<div class="bg-gradient-anim" aria-hidden="true"></div>
+
+<!-- Particles canvas -->
+<canvas id="particles-canvas" aria-hidden="true"></canvas>
+
+<!-- Custom cursor -->
+<div id="cursor-dot" aria-hidden="true"></div>
+<div id="cursor-ring" aria-hidden="true"></div>
+
+<!-- Lightbox -->
+<div id="lightbox" role="dialog" aria-label="Visionneuse d'image" aria-modal="true">
+  <img id="lightbox-img" src="" alt="Image agrandie">
+  <button id="lightbox-close" aria-label="Fermer">✕</button>
+  <div id="lightbox-counter" aria-live="polite"></div>
+</div>
+
+<!-- HEADER -->
+<header id="site-header" role="banner">
   <div class="container">
-    <nav aria-label="Navigation">
-      <div class="brand">
-        <div class="logo">AB</div>
+    <nav aria-label="Navigation principale">
+      <a class="brand" href="#" aria-label="Anicet BIZOT — Accueil">
+        <div class="logo" aria-hidden="true">AB</div>
         <span>Anicet BIZOT</span>
+      </a>
+      <div class="navlinks" role="list">
+        <a href="#apropos" role="listitem">À propos</a>
+        <a href="#competences" role="listitem">Compétences</a>
+        <a href="#experience" role="listitem">Parcours</a>
+        <a href="#projets" role="listitem">Projets</a>
       </div>
-      <div class="navlinks">
-        <a href="#apropos">À propos</a>
-        <a href="#competences">Compétences</a>
-        <a href="#experience">Parcours</a>
-        <a href="#projets">Projets</a>
-        <button class="theme-toggle" id="themeToggle">🌓 Thème</button>
+      <div class="nav-actions">
+        <button class="theme-toggle" id="themeToggle" aria-label="Changer le thème" title="Basculer thème clair/sombre">🌓</button>
+        <a class="btn" href="BIZOT_Anicet_CV_I.pdf" target="_blank" rel="noopener noreferrer" aria-label="Télécharger le CV d'Anicet BIZOT (PDF)">📄 CV</a>
       </div>
     </nav>
   </div>
 </header>
 
-<main class="hero">
-  <div class="container hero-grid">
-    <div>
-      <span class="kicker">Objectif : Cycle Ingénieur CESI</span>
-      <h1>Alternant BE Automatisme & Électricité</h1>
-      <p>Technicien autonome en bureau d'études chez ARMOR GROUP, je réalise moi-même les études électriques, la programmation automate/IHM et j'accompagne les électriciens lors des mises en service. Mon objectif au CESI : acquérir les compétences de gestion de projet globale (cahier des charges, planification, management transverse) pour devenir ingénieur.</p>
-      <div class="cta">
-        <a class="btn" href="#projets">Voir mes projets</a>
-        <a class="btn secondary" href="BIZOT_Anicet_CV_I.pdf" target="_blank">Télécharger mon CV</a>
+<main>
+
+  <!-- HERO SECTION -->
+  <section class="hero" aria-labelledby="hero-heading">
+    <div class="hero-bg" aria-hidden="true"></div>
+    <div class="container hero-grid">
+      <div>
+        <div class="kicker" aria-label="Objectif : Cycle Ingénieur CESI">
+          🎯 Objectif : Cycle Ingénieur CESI
+        </div>
+        <h1 id="hero-heading">
+          <span class="highlight">Alternant BE</span><br>
+          Automatisme<br>& Électricité
+        </h1>
+        <p class="hero-desc">
+          Technicien autonome chez <strong>ARMOR GROUP</strong>, je conçois, programme et mets en service des installations industrielles. Objectif CESI : devenir ingénieur capable de piloter des projets de A à Z.
+        </p>
+        <div class="cta">
+          <a class="btn" href="#projets" aria-label="Voir mes réalisations industrielles">🔍 Mes projets</a>
+          <a class="btn secondary" href="BIZOT_Anicet_CV_I.pdf" target="_blank" rel="noopener noreferrer" aria-label="Télécharger le CV (PDF)">⬇ Télécharger CV</a>
+          <a class="btn secondary" href="CV_anglais.pdf" target="_blank" rel="noopener noreferrer" aria-label="Download English CV (PDF)">🇬🇧 CV anglais</a>
+        </div>
+        <div class="hero-stats" aria-label="Statistiques clés">
+          <div class="stat-item">
+            <span class="stat-num" data-count="4" data-suffix="">4</span>
+            <span class="stat-label">Projets majeurs</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-num" data-count="2" data-suffix="ans">2ans</span>
+            <span class="stat-label">En alternance</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-num" data-count="45" data-suffix="k€">45k€</span>
+            <span class="stat-label">Budget suivi</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-num" data-count="3" data-suffix="">3</span>
+            <span class="stat-label">Outils automates</span>
+          </div>
+        </div>
+      </div>
+      <div class="hero-portrait">
+        <div class="portrait-ring" aria-hidden="true"></div>
+        <img class="portrait-img" src="canvas.png" alt="Portrait d'Anicet BIZOT, alternant BE Automatisme & Électricité" loading="eager">
       </div>
     </div>
-    <div class="hero-illus">
-      <img src="canvas.png" alt="Portrait Anicet BIZOT">
+  </section>
+
+  <!-- STATS SECTION -->
+  <div class="stats-section" aria-label="Chiffres clés">
+    <div class="container">
+      <div class="stats-grid">
+        <div class="stat-card reveal reveal-delay-1">
+          <span class="num" data-count="4" data-suffix=""><span class="counter-val">0</span></span>
+          <div class="lbl">Projets industriels</div>
+        </div>
+        <div class="stat-card reveal reveal-delay-2">
+          <span class="num"><span class="counter-val" data-count="45" data-suffix="k€">0</span><span class="suffix">k€</span></span>
+          <div class="lbl">Budget supervisé</div>
+        </div>
+        <div class="stat-card reveal reveal-delay-3">
+          <span class="num"><span class="counter-val" data-count="3" data-suffix="">0</span></span>
+          <div class="lbl">Logiciels automates</div>
+        </div>
+        <div class="stat-card reveal reveal-delay-4">
+          <span class="num"><span class="counter-val" data-count="5" data-suffix="+">0</span><span class="suffix">+</span></span>
+          <div class="lbl">Techno maîtrisées</div>
+        </div>
+      </div>
     </div>
   </div>
+
+  <!-- ABOUT SECTION -->
+  <section id="apropos" aria-labelledby="apropos-heading">
+    <div class="container">
+      <div class="section-head reveal">
+        <div class="section-badge">👤 Profil</div>
+        <h2 id="apropos-heading">Profil & Démarche Ingénieur</h2>
+        <p class="muted">Maîtrise technique terrain et ambition de gestion de projet</p>
+      </div>
+
+      <div class="about-grid">
+        <div class="card reveal from-left">
+          <div class="about-body">
+            <p>
+              Actuellement en alternance chez <strong>ARMOR GROUP</strong> au sein du BE Automatisme & Électricité, j'interviens de la conception jusqu'à la mise en service sur le terrain. Je réalise moi-même les schémas sous <strong>SEE Electrical</strong>, le développement IHM et la programmation sous <strong>TIA Portal</strong>, et j'accompagne les électriciens câbleurs lors des arrêts techniques (notamment en zones ATEX).
+            </p>
+            <p>
+              Aujourd'hui, j'ai une solide maîtrise de mon cœur de métier technique. Intégrer le cursus <strong>Ingénieur CESI</strong> est pour moi l'étape nécessaire pour franchir un cap : passer du rôle d'exécutant technique autonome à celui de véritable chef de projet capable de rédiger un cahier des charges, de planifier un chantier (Gantt) et de coordonner plusieurs corps de métiers (mécanique, électricité, production).
+            </p>
+          </div>
+        </div>
+
+        <div class="card reveal from-right">
+          <ul class="info-list" aria-label="Informations clés">
+            <li class="info-item">
+              <div class="info-icon" aria-hidden="true">🏢</div>
+              <span><strong>ARMOR GROUP</strong> — BE Automatisme & Électricité</span>
+            </li>
+            <li class="info-item">
+              <div class="info-icon" aria-hidden="true">🎓</div>
+              <span><strong>BUT GEII</strong> — IUT de Nantes (AII)</span>
+            </li>
+            <li class="info-item">
+              <div class="info-icon" aria-hidden="true">📍</div>
+              <span>Région Pays de la Loire</span>
+            </li>
+            <li class="info-item">
+              <div class="info-icon" aria-hidden="true">🎯</div>
+              <span>Candidat <strong>Cycle Ingénieur CESI</strong></span>
+            </li>
+            <li class="info-item">
+              <div class="info-icon" aria-hidden="true">🇬🇧</div>
+              <span>Anglais technique (B2)</span>
+            </li>
+          </ul>
+
+          <div style="margin-top: 20px;">
+            <div class="skill-bar-wrap" aria-label="Niveau TIA Portal : Avancé (85%)">
+              <div class="skill-bar-label"><span>TIA Portal</span><span>85%</span></div>
+              <div class="skill-bar"><div class="skill-bar-fill" data-width="85"></div></div>
+            </div>
+            <div class="skill-bar-wrap" style="margin-top:12px" aria-label="Niveau SEE Electrical : Avancé (80%)">
+              <div class="skill-bar-label"><span>SEE Electrical</span><span>80%</span></div>
+              <div class="skill-bar"><div class="skill-bar-fill" data-width="80"></div></div>
+            </div>
+            <div class="skill-bar-wrap" style="margin-top:12px" aria-label="Niveau KiCad : Intermédiaire (65%)">
+              <div class="skill-bar-label"><span>KiCad</span><span>65%</span></div>
+              <div class="skill-bar"><div class="skill-bar-fill" data-width="65"></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- COMPETENCES SECTION -->
+  <section id="competences" aria-labelledby="competences-heading">
+    <div class="container">
+      <div class="section-head reveal">
+        <div class="section-badge">⚙️ Skills</div>
+        <h2 id="competences-heading">Compétences Techniques & Organisationnelles</h2>
+        <p class="muted">Savoir-faire industriel et suivi de chantier</p>
+      </div>
+
+      <div class="skills-filter reveal" role="group" aria-label="Filtrer les compétences par catégorie">
+        <button class="filter-btn active" data-filter="all">Toutes</button>
+        <button class="filter-btn" data-filter="organisation">Organisation</button>
+        <button class="filter-btn" data-filter="electricite">Électricité</button>
+        <button class="filter-btn" data-filter="automatisme">Automatisme</button>
+        <button class="filter-btn" data-filter="transverse">Transversal</button>
+      </div>
+
+      <div class="skills-grid" id="skills-grid">
+
+        <article class="card skill-card reveal" data-category="organisation" aria-label="Compétences Organisation & Terrain">
+          <h3>📋 Organisation & Terrain</h3>
+          <div class="stack">
+            <span class="tag manage">Suivi d'électriciens câbleurs</span>
+            <span class="tag manage">Réunions de suivi</span>
+            <span class="tag manage">Estimation des temps</span>
+            <span class="tag manage">Chiffrage / Budget</span>
+            <span class="tag manage">Coordination ligne de prod.</span>
+            <span class="tag manage">Rédaction RIDA / PV essais</span>
+          </div>
+        </article>
+
+        <article class="card skill-card reveal reveal-delay-1" data-category="electricite" aria-label="Compétences Conception & Électricité">
+          <h3>⚡ Conception & Électricité</h3>
+          <div class="stack">
+            <span class="tag">Étude réglementaire (ATEX)</span>
+            <span class="tag">Sécurité Machine (LIE / SIL)</span>
+            <span class="tag">Schémas SEE Electrical</span>
+            <span class="tag">Dimensionnement composants</span>
+            <span class="tag">Conception PCB (KiCad)</span>
+            <span class="tag">Instrumentation industrielle</span>
+          </div>
+        </article>
+
+        <article class="card skill-card reveal reveal-delay-2" data-category="automatisme" aria-label="Compétences Automatisme & Informatique Industrielle">
+          <h3>🤖 Automatisme & Info. Ind.</h3>
+          <div class="stack">
+            <span class="tag">LADDER / GRAFCET / ST</span>
+            <span class="tag">TIA Portal (S7-1200/1500)</span>
+            <span class="tag">Profinet / Modbus TCP/IP</span>
+            <span class="tag">Supervision IHM / Historian</span>
+            <span class="tag accent-tag">Migration STEP7 → TIA</span>
+            <span class="tag">Blocs UDT standardisés</span>
+          </div>
+        </article>
+
+        <article class="card skill-card reveal reveal-delay-3" data-category="transverse" aria-label="Compétences Transversales">
+          <h3>🔧 Compétences Transversales</h3>
+          <div class="stack">
+            <span class="tag soft">C / Arduino</span>
+            <span class="tag soft">Routage PCB</span>
+            <span class="tag soft">Présentation en anglais</span>
+            <span class="tag soft">Travail en équipe</span>
+            <span class="tag soft">Autonomie terrain</span>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPERIENCE / TIMELINE SECTION -->
+  <section id="experience" aria-labelledby="experience-heading">
+    <div class="container">
+      <div class="section-head reveal">
+        <div class="section-badge">📅 Parcours</div>
+        <h2 id="experience-heading">Parcours & Expérience</h2>
+        <p class="muted">Formation académique et immersion professionnelle</p>
+      </div>
+
+      <div class="card reveal">
+        <ul class="timeline" aria-label="Chronologie du parcours">
+
+          <li class="tl-item reveal from-left">
+            <div class="tl-dot" aria-hidden="true"></div>
+            <time class="tl-date" datetime="2024-09">Sept. 2024 — Aujourd'hui</time>
+            <h3 class="tl-title">Alternant BE Automatisme & Électricité — ARMOR GROUP</h3>
+            <p class="tl-desc">Participation active aux projets de modernisation (Retrofit), conception complète (schémas électriques, IHM, TIA Portal), suivi de budget, accompagnement terrain des électriciens et mise en service sur lignes de production.</p>
+          </li>
+
+          <li class="tl-item reveal from-left reveal-delay-1">
+            <div class="tl-dot" aria-hidden="true"></div>
+            <time class="tl-date" datetime="2023-09">Sept. 2023 — Aujourd'hui</time>
+            <h3 class="tl-title">BUT Génie Électrique et Informatique Industrielle (GEII) — IUT de Nantes</h3>
+            <p class="tl-desc">Spécialisation Automatisme et Informatique Industrielle (AII). Apprentissage poussé en systèmes embarqués, réseaux industriels et méthodologie technique.</p>
+          </li>
+
+          <li class="tl-item reveal from-left reveal-delay-2">
+            <div class="tl-dot" aria-hidden="true"></div>
+            <time class="tl-date" datetime="2023">Obtenu en 2023</time>
+            <h3 class="tl-title">Baccalauréat STI2D (mention Assez Bien)</h3>
+            <p class="tl-desc">Sciences et Technologies de l'Industrie et du Développement Durable. Acquisition de solides bases transversales en ingénierie, mécanique et énergie.</p>
+          </li>
+
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJETS SECTION -->
+  <section id="projets" aria-labelledby="projets-heading">
+    <div class="container">
+      <div class="section-head reveal">
+        <div class="section-badge">🏆 Réalisations</div>
+        <h2 id="projets-heading">Réalisations Majeures</h2>
+        <p class="muted">Projets industriels menés en bureau d'études</p>
+      </div>
+
+      <div class="projects-controls reveal">
+        <div class="search-box" role="search">
+          <span class="search-icon" aria-hidden="true">🔍</span>
+          <input type="search" id="proj-search" placeholder="Rechercher un projet…" aria-label="Rechercher parmi les projets" autocomplete="off">
+        </div>
+        <div class="proj-filters" role="group" aria-label="Filtrer les projets par catégorie">
+          <button class="filter-btn active" data-proj-filter="all">Tous</button>
+          <button class="filter-btn" data-proj-filter="retrofit">Retrofit</button>
+          <button class="filter-btn" data-proj-filter="process">Process</button>
+          <button class="filter-btn" data-proj-filter="rd">R&D</button>
+          <button class="filter-btn" data-proj-filter="embarque">Embarqué</button>
+        </div>
+      </div>
+
+      <div class="projects-grid" id="projects-grid">
+
+        <article class="card proj-card reveal" data-proj="dcm65" data-category="retrofit" data-keywords="retrofit dcm65 atex tia portal ihm schéma électrique" role="button" tabindex="0" aria-label="Voir le détail du projet Retrofit DCM65">
+          <div class="proj-thumb" role="img" aria-label="Photo du projet Retrofit DCM65">
+            <div class="proj-thumb-overlay"><span>Voir le projet ➔</span></div>
+          </div>
+          <div class="proj-body">
+            <div class="proj-header">
+              <h3 class="proj-title">Retrofit Ligne d'Enduction (DCM65)</h3>
+              <span class="proj-badge badge-featured">En vedette</span>
+            </div>
+            <p class="proj-desc">Modernisation d'une zone ATEX (budget ~45k€). Autonomie terrain complète, programmation TIA Portal, refonte IHM 16/9, migration sécurité SIL.</p>
+            <div class="proj-footer">
+              <span class="proj-cat">Retrofit & ATEX</span>
+              <span class="proj-link">Détails <span aria-hidden="true">➔</span></span>
+            </div>
+          </div>
+        </article>
+
+        <article class="card proj-card reveal reveal-delay-1" data-proj="ailes" data-category="process" data-keywords="kimo debimo instrumentation aéraulique process modbus historian" role="button" tabindex="0" aria-label="Voir le détail du projet Instrumentation Aéraulique">
+          <div class="proj-thumb" role="img" aria-label="Photo du projet Instrumentation Aéraulique">
+            <div class="proj-thumb-overlay"><span>Voir le projet ➔</span></div>
+          </div>
+          <div class="proj-body">
+            <div class="proj-header">
+              <h3 class="proj-title">Instrumentation Aéraulique Sécurisée</h3>
+              <span class="proj-badge badge-new">Nouveau</span>
+            </div>
+            <p class="proj-desc">Intégration KIMO/DEBIMO via Modbus TCP/IP. Pilotage de 2 électriciens sur site, blocs UDT standardisés, traçabilité Historian.</p>
+            <div class="proj-footer">
+              <span class="proj-cat">Process & Déploiement</span>
+              <span class="proj-link">Détails <span aria-hidden="true">➔</span></span>
+            </div>
+          </div>
+        </article>
+
+        <article class="card proj-card reveal reveal-delay-2" data-proj="s2dtmf" data-category="rd" data-keywords="dtmf électronique pcb kicad arduino c hardware software r&d" role="button" tabindex="0" aria-label="Voir le détail du projet Décodeur DTMF">
+          <div class="proj-thumb" role="img" aria-label="Photo du projet Décodeur DTMF">
+            <div class="proj-thumb-overlay"><span>Voir le projet ➔</span></div>
+          </div>
+          <div class="proj-body">
+            <div class="proj-header">
+              <h3 class="proj-title">R&D Électronique : Décodeur DTMF</h3>
+              <span class="proj-badge badge-rd">R&D</span>
+            </div>
+            <p class="proj-desc">Conception complète (HW & SW) d'un décodeur DTMF pour déverrouillage industriel. Routage PCB KiCad, programmation C/Arduino.</p>
+            <div class="proj-footer">
+              <span class="proj-cat">Étude & R&D</span>
+              <span class="proj-link">Détails <span aria-hidden="true">➔</span></span>
+            </div>
+          </div>
+        </article>
+
+        <article class="card proj-card reveal reveal-delay-3" data-proj="barriere" data-category="embarque" data-keywords="embarqué samd21 pcb kicad c barrière détection" role="button" tabindex="0" aria-label="Voir le détail du projet Système Embarqué">
+          <div class="proj-thumb" role="img" aria-label="Photo du projet Système Embarqué">
+            <div class="proj-thumb-overlay"><span>Voir le projet ➔</span></div>
+          </div>
+          <div class="proj-body">
+            <div class="proj-header">
+              <h3 class="proj-title">Système Embarqué : Détection & Contrôle</h3>
+            </div>
+            <p class="proj-desc">PCB de détection et programmation microcontrôleur SAMD21. Machine à états en C, synchronisation détection / signaux / mécanique.</p>
+            <div class="proj-footer">
+              <span class="proj-cat">Système Embarqué</span>
+              <span class="proj-link">Détails <span aria-hidden="true">➔</span></span>
+            </div>
+          </div>
+        </article>
+
+      </div>
+
+      <p id="no-results" style="display:none; text-align:center; color:var(--muted); margin-top:40px; font-size:1.1rem;">
+        Aucun projet ne correspond à votre recherche.
+      </p>
+
+    </div>
+  </section>
+
 </main>
 
-<section id="apropos">
+<!-- FOOTER -->
+<footer role="contentinfo">
   <div class="container">
-    <div class="section-head">
-      <h2>Profil & Démarche Ingénieur</h2>
-      <span class="muted">Maîtrise technique terrain et ambition de gestion de projet</span>
+    <div class="footer-links">
+      <a href="BIZOT_Anicet_CV_I.pdf" target="_blank" rel="noopener noreferrer" aria-label="CV Français (PDF)">CV Français</a>
+      <a href="CV_anglais.pdf" target="_blank" rel="noopener noreferrer" aria-label="CV Anglais (PDF)">CV Anglais</a>
+      <a href="#apropos">À propos</a>
+      <a href="#projets">Projets</a>
     </div>
-    <div class="card">
-      <p style="font-size: 1.05rem; line-height: 1.7; margin-top:0;">
-        Actuellement en alternance chez ARMOR GROUP au sein du BE Automatisme & Électricité, j'interviens de la conception jusqu'à la mise en service sur le terrain. Je réalise moi-même les schémas sous SEE Electrical, le développement IHM et la programmation sous TIA Portal, et je suis chargé d'accompagner les électriciens câbleurs lors des arrêts techniques (ex: en zones ATEX).
-      </p>
-      <p style="font-size: 1.05rem; line-height: 1.7;">
-        Aujourd'hui, j'ai une solide maîtrise de mon cœur de métier technique. Intégrer le cursus <strong>Ingénieur CESI</strong> est pour moi l'étape nécessaire pour franchir un cap : passer du rôle d'exécutant technique autonome à celui de véritable chef de projet capable de rédiger un cahier des charges, de planifier un chantier (Gantt) et de coordonner plusieurs corps de métiers (mécanique, électricité, production).
-      </p>
-    </div>
+    <p>© <span id="year"></span> Anicet BIZOT — Candidat Cycle Ingénieur CESI</p>
+    <p style="margin-top:6px; font-size:.8rem; opacity:.6;">Alternant BE Automatisme & Électricité · ARMOR GROUP · IUT de Nantes</p>
   </div>
-</section>
+</footer>
 
-<section id="competences">
-  <div class="container">
-    <div class="section-head">
-      <h2>Compétences Techniques & Organisationnelles</h2>
-      <span class="muted">Savoir-faire industriel et suivi de chantier</span>
-    </div>
-    <div class="grid skills">
-      
-      <article class="card skill">
-        <h3>📋 Organisation & Terrain</h3>
-        <div class="stack">
-          <span class="tag manage">Suivi d'électriciens câbleurs</span>
-          <span class="tag manage">Participation aux réunions de suivi</span>
-          <span class="tag manage">Estimation des temps d'intervention</span>
-          <span class="tag manage">Chiffrage / Budget</span>
-          <span class="tag manage">Coordination sur ligne de production</span>
-        </div>
-      </article>
+<!-- MODALS -->
+<div id="modals" role="region" aria-label="Détails des projets">
 
-      <article class="card skill">
-        <h3>⚡ Conception & Électricité</h3>
-        <div class="stack">
-          <span class="tag">Étude réglementaire (ATEX)</span>
-          <span class="tag">Sécurité Machine (LIE)</span>
-          <span class="tag">Schémas SEE Electrical</span>
-          <span class="tag">Dimensionnement composants</span>
-          <span class="tag">Conception PCB (KiCad)</span>
-        </div>
-      </article>
-
-      <article class="card skill">
-        <h3>🤖 Automatisme & Informatique Ind.</h3>
-        <div class="stack">
-          <span class="tag">LADDER / GRAFCET / ST (TIA Portal)</span>
-          <span class="tag">Réseaux: Profinet, Modbus TCP/IP</span>
-          <span class="tag">Supervision IHM / Historian</span>
-        </div>
-      </article>
-
-    </div>
-  </div>
-</section>
-
-<section id="experience">
-  <div class="container">
-    <div class="section-head">
-      <h2>Parcours & Expérience</h2>
-      <span class="muted">Formation académique et immersion professionnelle</span>
-    </div>
-    <div class="card">
-      <ul class="timeline">
-        <li class="tl-item">
-          <div class="tl-dot"></div>
-          <span class="tl-date">Sept. 2024 — Aujourd'hui</span>
-          <h3 class="tl-title">Alternant BE Automatisme & Électricité — ARMOR GROUP</h3>
-          <p class="tl-desc">Participation active aux projets de modernisation (Retrofit), conception complète (schémas électriques, IHM, TIA Portal), suivi de budget, accompagnement terrain des électriciens et mise en service sur lignes de production.</p>
-        </li>
-        <li class="tl-item">
-          <div class="tl-dot"></div>
-          <span class="tl-date">Sept. 2023 — Aujourd'hui</span>
-          <h3 class="tl-title">BUT Génie Électrique et Informatique Industrielle (GEII) — IUT de Nantes</h3>
-          <p class="tl-desc">Spécialisation en Automatisme et Informatique Industrielle (AII). Apprentissage poussé en systèmes embarqués, réseaux industriels et méthodologie technique.</p>
-        </li>
-        <li class="tl-item">
-          <div class="tl-dot"></div>
-          <span class="tl-date">Obtenu en 2023</span>
-          <h3 class="tl-title">Baccalauréat STI2D</h3>
-          <p class="tl-desc">Sciences et Technologies de l'Industrie et du Développement Durable (mention Assez Bien). Acquisition de solides bases transversales en ingénierie, mécanique et énergie.</p>
-        </li>
-      </ul>
-    </div>
-  </div>
-</section>
-
-<section id="projets">
-  <div class="container">
-    <div class="section-head">
-      <h2>Réalisations Majeures</h2>
-      <span class="muted">Projets industriels menés en bureau d'études</span>
-    </div>
-    
-    <div class="grid projects">
-      
-      <article class="card proj" data-proj="dcm65">
-        <div class="thumb"></div>
-        <h3>Retrofit Ligne d'Enduction (DCM65)</h3>
-        <p>Participation à la modernisation d'une zone ATEX (budget cible ~45k€) supervisé par un automaticien. Autonomie totale sur le terrain en semaine 1 pour guider les électriciens, réalisation TIA Portal et IHM.</p>
-        <div class="proj-footer">
-          <span>Retrofit & ATEX</span>
-          <span>Détails ➔</span>
-        </div>
-      </article>
-
-      <article class="card proj" data-proj="ailes">
-        <div class="thumb"></div>
-        <h3>Instrumentation Aéraulique Sécurisée</h3>
-        <p>Intégration d'un système de mesure en temps réel (KIMO/DEBIMO). Pilotage de 2 électriciens sur site, tests en réel, correction de problèmes et déploiement avec blocs UDT standardisés.</p>
-        <div class="proj-footer">
-          <span>Process & Déploiement</span>
-          <span>Détails ➔</span>
-        </div>
-      </article>
-
-      <article class="card proj" data-proj="s2dtmf">
-        <div class="thumb"></div>
-        <h3>R&D Électronique : Décodeur DTMF</h3>
-        <p>Projet technique de conception complète (Hardware & Software) pour le déverrouillage d'un système robotisé industriel. Preuve de concept, routage PCB et intégration C/Arduino.</p>
-        <div class="proj-footer">
-          <span>Étude & R&D</span>
-          <span>Détails ➔</span>
-        </div>
-      </article>
-
-      <article class="card proj" data-proj="barriere">
-        <div class="thumb"></div>
-        <h3>Système Embarqué : Détection & Contrôle</h3>
-        <p>Conception hardware d'un PCB de détection et programmation d'un microcontrôleur SAMD21. Gestion des délais, assemblage et tests d'intégration complets.</p>
-        <div class="proj-footer">
-          <span>Système Embarqué</span>
-          <span>Détails ➔</span>
-        </div>
-      </article>
-
-    </div>
-  </div>
-</section>
-
-<div id="modals">
-  
-  <div class="modal" id="modal-dcm65">
+  <!-- Modal DCM65 -->
+  <div class="modal" id="modal-dcm65" role="dialog" aria-modal="true" aria-labelledby="modal-dcm65-title">
     <div class="dialog">
       <div class="modal-header">
-        <h3>Retrofit DCM65 (Ligne d'enduction solvantée)</h3>
-        <button class="close-btn" data-close>X</button>
+        <h3 id="modal-dcm65-title">🏭 Retrofit DCM65 — Ligne d'enduction solvantée</h3>
+        <button class="close-btn" data-close aria-label="Fermer cette fenêtre">✕</button>
       </div>
       <div class="modal-body">
         <h4>🎯 Rôle & Suivi de Chantier</h4>
         <ul>
           <li><strong>Supervision :</strong> Projet réalisé en binôme, sous la direction d'un automaticien référent.</li>
-          <li><strong>Autonomie terrain :</strong> Responsabilité complète de l'accompagnement chantier lors de la première semaine d'arrêt pour répondre aux questions techniques de 2 électriciens câbleurs.</li>
+          <li><strong>Autonomie terrain :</strong> Responsabilité complète de l'accompagnement chantier en semaine 1 — répondre aux questions techniques de 2 électriciens câbleurs.</li>
           <li><strong>Gestion :</strong> Suivi d'un budget cible de 50k€ (atterrissage à ~45k€ HT) et rédaction des PV d'essais (RIDA).</li>
         </ul>
-        
-        <h4>⚙️ Dimension Technique (Réalisée par mes soins)</h4>
+        <h4>⚙️ Dimension Technique</h4>
         <ul>
-          <li><strong>Électricité & Sécurité :</strong> Mise à jour documentaire sous SEE Electrical. Migration de la mesure LIE (zone ATEX) sur des cartes de sécurité analogiques SIL, et doublage des sondes.</li>
-          <li><strong>Automatisme :</strong> Migration du programme STEP7 vers TIA Portal. Standardisation des blocs et fiabilisation du réseau Profinet.</li>
+          <li><strong>Électricité & Sécurité :</strong> Mise à jour documentaire sous SEE Electrical. Migration de la mesure LIE (zone ATEX) sur des cartes de sécurité analogiques SIL, doublage des sondes.</li>
+          <li><strong>Automatisme :</strong> Migration du programme STEP7 vers TIA Portal. Standardisation des blocs, fiabilisation du réseau Profinet.</li>
           <li><strong>IHM :</strong> Refonte totale de l'interface (écran 16/9, ergonomie revue) et intégration de pressostats d'extraction interverrouillés.</li>
         </ul>
-
         <div class="gallery" data-key="dcm65">
-          <div class="g-viewport"><img src="" data-role="image" alt="Image projet"></div>
-          <div class="g-controls">
-            <button class="g-btn" data-action="prev">‹ Précédent</button>
-            <span class="muted" data-role="counter">1 / X</span>
-            <button class="g-btn" data-action="next">Suivant ›</button>
+          <div class="g-viewport">
+            <img src="" data-role="image" alt="Image projet DCM65" loading="lazy">
+            <div class="g-zoom-hint">🔍 Cliquer pour agrandir</div>
           </div>
-          <div class="g-thumbs" data-role="thumbs"></div>
+          <div class="g-controls">
+            <button class="g-btn" data-action="prev" aria-label="Image précédente">‹ Précédent</button>
+            <span class="muted" data-role="counter" aria-live="polite">1 / 5</span>
+            <button class="g-btn" data-action="next" aria-label="Image suivante">Suivant ›</button>
+          </div>
+          <div class="g-thumbs" data-role="thumbs" aria-label="Vignettes du projet DCM65"></div>
         </div>
       </div>
     </div>
   </div>
 
-  <div class="modal" id="modal-ailes">
+  <!-- Modal Ailes -->
+  <div class="modal" id="modal-ailes" role="dialog" aria-modal="true" aria-labelledby="modal-ailes-title">
     <div class="dialog">
       <div class="modal-header">
-        <h3>Instrumentation Aéraulique (KIMO/DEBIMO)</h3>
-        <button class="close-btn" data-close>X</button>
+        <h3 id="modal-ailes-title">💨 Instrumentation Aéraulique (KIMO/DEBIMO)</h3>
+        <button class="close-btn" data-close aria-label="Fermer cette fenêtre">✕</button>
       </div>
       <div class="modal-body">
-        <h4>🎯 Dimension "Terrain & Suivi"</h4>
+        <h4>🎯 Dimension Terrain & Suivi</h4>
         <ul>
-          <li><strong>Analyse & Préparation :</strong> Remplacement d'un contrôle manuel (tube de Pitot) par un suivi automatisé continu. Création d'un banc d'essai en atelier pour valider la communication.</li>
-          <li><strong>Pilotage Chantier :</strong> Encadrement et accompagnement de 2 électriciens pour la pose du matériel sur la ligne de production.</li>
-          <li><strong>Mise en service :</strong> Réalisation des tests en conditions réelles, diagnostic et correction des problèmes (bugs) rencontrés sur le terrain.</li>
+          <li><strong>Analyse & Préparation :</strong> Remplacement d'un contrôle manuel (tube de Pitot) par un suivi automatisé continu. Création d'un banc d'essai en atelier.</li>
+          <li><strong>Pilotage Chantier :</strong> Encadrement et accompagnement de 2 électriciens pour la pose du matériel sur ligne de production.</li>
+          <li><strong>Mise en service :</strong> Tests en conditions réelles, diagnostic et correction des problèmes rencontrés sur le terrain.</li>
         </ul>
-
         <h4>⚙️ Dimension Technique</h4>
         <ul>
           <li><strong>Matériel & Réseau :</strong> Implantation d'ailes DEBIMO et sondes PT100 sur boîtier KIMO C310 via Modbus TCP/IP.</li>
-          <li><strong>Standardisation Automate :</strong> Création de blocs et types de données standardisés (UDT) sous TIA Portal, permettant un déploiement rapide et propre sur une seconde machine par la suite.</li>
-          <li><strong>Supervision :</strong> Traçabilité des données à long terme vers la base de données Historian pour le service Process.</li>
+          <li><strong>Standardisation Automate :</strong> Création de blocs et types de données standardisés (UDT) sous TIA Portal, déploiement rapide sur une seconde machine.</li>
+          <li><strong>Supervision :</strong> Traçabilité des données vers la base Historian pour le service Process.</li>
         </ul>
-
         <div class="gallery" data-key="ailes">
-          <div class="g-viewport"><img src="" data-role="image" alt="Image projet"></div>
-          <div class="g-controls">
-            <button class="g-btn" data-action="prev">‹ Précédent</button>
-            <span class="muted" data-role="counter">1 / X</span>
-            <button class="g-btn" data-action="next">Suivant ›</button>
+          <div class="g-viewport">
+            <img src="" data-role="image" alt="Image projet Instrumentation Aéraulique" loading="lazy">
+            <div class="g-zoom-hint">🔍 Cliquer pour agrandir</div>
           </div>
-          <div class="g-thumbs" data-role="thumbs"></div>
+          <div class="g-controls">
+            <button class="g-btn" data-action="prev" aria-label="Image précédente">‹ Précédent</button>
+            <span class="muted" data-role="counter" aria-live="polite">1 / 4</span>
+            <button class="g-btn" data-action="next" aria-label="Image suivante">Suivant ›</button>
+          </div>
+          <div class="g-thumbs" data-role="thumbs" aria-label="Vignettes du projet Aéraulique"></div>
         </div>
       </div>
     </div>
   </div>
 
-  <div class="modal" id="modal-s2dtmf">
+  <!-- Modal DTMF -->
+  <div class="modal" id="modal-s2dtmf" role="dialog" aria-modal="true" aria-labelledby="modal-dtmf-title">
     <div class="dialog">
       <div class="modal-header">
-        <h3>R&D : Système de déverrouillage DTMF</h3>
-        <button class="close-btn" data-close>X</button>
+        <h3 id="modal-dtmf-title">📡 R&D : Système de déverrouillage DTMF</h3>
+        <button class="close-btn" data-close aria-label="Fermer cette fenêtre">✕</button>
       </div>
       <div class="modal-body">
-        <h4>🎯 Dimension "Conception"</h4>
+        <h4>🎯 Dimension Conception</h4>
         <ul>
           <li>Conception complète d'un système de décodage fréquentiel (HT9170) depuis la feuille blanche jusqu'au prototype fonctionnel.</li>
           <li>Validation des choix de composants selon le cahier des charges et contraintes de l'environnement matériel.</li>
@@ -413,46 +1869,51 @@
           <li><strong>Hardware :</strong> Routage du circuit imprimé (PCB) sous KiCad, soudure et tests unitaires des étages électroniques.</li>
           <li><strong>Software :</strong> Programmation C/Arduino pour lire les états logiques, valider le code d'entrée et piloter l'actionneur de déverrouillage.</li>
         </ul>
-
         <div class="gallery" data-key="s2dtmf">
-          <div class="g-viewport"><img src="" data-role="image" alt="Image projet"></div>
-          <div class="g-controls">
-            <button class="g-btn" data-action="prev">‹ Précédent</button>
-            <span class="muted" data-role="counter">1 / X</span>
-            <button class="g-btn" data-action="next">Suivant ›</button>
+          <div class="g-viewport">
+            <img src="" data-role="image" alt="Image projet DTMF" loading="lazy">
+            <div class="g-zoom-hint">🔍 Cliquer pour agrandir</div>
           </div>
-          <div class="g-thumbs" data-role="thumbs"></div>
+          <div class="g-controls">
+            <button class="g-btn" data-action="prev" aria-label="Image précédente">‹ Précédent</button>
+            <span class="muted" data-role="counter" aria-live="polite">1 / 5</span>
+            <button class="g-btn" data-action="next" aria-label="Image suivante">Suivant ›</button>
+          </div>
+          <div class="g-thumbs" data-role="thumbs" aria-label="Vignettes du projet DTMF"></div>
         </div>
       </div>
     </div>
   </div>
 
-  <div class="modal" id="modal-barriere">
+  <!-- Modal Barrière -->
+  <div class="modal" id="modal-barriere" role="dialog" aria-modal="true" aria-labelledby="modal-barriere-title">
     <div class="dialog">
       <div class="modal-header">
-        <h3>Système Embarqué : Détection & Barrière</h3>
-        <button class="close-btn" data-close>X</button>
+        <h3 id="modal-barriere-title">🚦 Système Embarqué : Détection & Barrière</h3>
+        <button class="close-btn" data-close aria-label="Fermer cette fenêtre">✕</button>
       </div>
       <div class="modal-body">
-        <h4>🎯 Dimension "Réalisation & Synthèse"</h4>
+        <h4>🎯 Dimension Réalisation & Synthèse</h4>
         <ul>
-          <li>Travail en équipe de projet : répartition des tâches matérielles et logicielles, suivi du planning de réalisation.</li>
-          <li>Vulgarisation technique et soutenance de présentation du projet finalisé en anglais.</li>
+          <li>Travail en équipe de projet : répartition des tâches matérielles et logicielles, suivi du planning.</li>
+          <li>Vulgarisation technique et soutenance en anglais du projet finalisé.</li>
         </ul>
         <h4>⚙️ Dimension Technique</h4>
         <ul>
-          <li>Routage de la carte de détection de présence (KiCad) et intégration avec une unité logique à base de microcontrôleur SAMD21.</li>
-          <li>Développement en langage C de la machine à états gérant la synchronisation entre la détection, les signaux lumineux et la mécanique de la barrière.</li>
+          <li>Routage de la carte de détection de présence (KiCad) et intégration avec microcontrôleur SAMD21.</li>
+          <li>Développement en C de la machine à états gérant synchronisation entre détection, signaux lumineux et mécanique de la barrière.</li>
         </ul>
-
         <div class="gallery" data-key="barriere">
-          <div class="g-viewport"><img src="" data-role="image" alt="Image projet"></div>
-          <div class="g-controls">
-            <button class="g-btn" data-action="prev">‹ Précédent</button>
-            <span class="muted" data-role="counter">1 / X</span>
-            <button class="g-btn" data-action="next">Suivant ›</button>
+          <div class="g-viewport">
+            <img src="" data-role="image" alt="Image projet Barrière" loading="lazy">
+            <div class="g-zoom-hint">🔍 Cliquer pour agrandir</div>
           </div>
-          <div class="g-thumbs" data-role="thumbs"></div>
+          <div class="g-controls">
+            <button class="g-btn" data-action="prev" aria-label="Image précédente">‹ Précédent</button>
+            <span class="muted" data-role="counter" aria-live="polite">1 / 5</span>
+            <button class="g-btn" data-action="next" aria-label="Image suivante">Suivant ›</button>
+          </div>
+          <div class="g-thumbs" data-role="thumbs" aria-label="Vignettes du projet Barrière"></div>
         </div>
       </div>
     </div>
@@ -460,107 +1921,404 @@
 
 </div>
 
-<footer style="border-top:var(--border); padding:32px 0; margin-top:64px; color:var(--muted); text-align:center;">
-  <div class="container">
-    © <span id="year">2024</span> Anicet BIZOT. Objectif Cycle Ingénieur CESI.
-  </div>
-</footer>
-
 <script>
-  // Theme Toggle
-  const themeToggle = document.getElementById('themeToggle');
+  'use strict';
+  /* ==================================================
+     UTILITIES
+  ================================================== */
+  const $ = (sel, ctx = document) => ctx.querySelector(sel);
+  const $$ = (sel, ctx = document) => [...ctx.querySelectorAll(sel)];
+
+  /* ==================================================
+     YEAR
+  ================================================== */
+  $('#year').textContent = new Date().getFullYear();
+
+  /* ==================================================
+     THEME
+  ================================================== */
   const root = document.documentElement;
+  const themeToggle = $('#themeToggle');
+  const savedTheme = localStorage.getItem('theme') || 'dark';
+  root.setAttribute('data-theme', savedTheme);
+
   themeToggle.addEventListener('click', () => {
     const isDark = root.getAttribute('data-theme') === 'dark';
-    root.setAttribute('data-theme', isDark ? 'light' : 'dark');
+    const next = isDark ? 'light' : 'dark';
+    root.setAttribute('data-theme', next);
+    localStorage.setItem('theme', next);
+    themeToggle.textContent = next === 'dark' ? '🌓' : '☀️';
   });
 
-  document.getElementById('year').textContent = new Date().getFullYear();
+  if (savedTheme === 'light') themeToggle.textContent = '☀️';
 
-  // Modal logic
-  const modalTriggers = document.querySelectorAll('[data-proj]');
-  const modals = document.querySelectorAll('.modal');
-  const closeBtns = document.querySelectorAll('[data-close]');
+  /* ==================================================
+     CUSTOM CURSOR
+  ================================================== */
+  const dot = $('#cursor-dot');
+  const ring = $('#cursor-ring');
 
-  modalTriggers.forEach(trigger => {
-    trigger.addEventListener('click', () => {
-      const projId = trigger.getAttribute('data-proj');
-      document.getElementById('modal-' + projId).classList.add('open');
+  if (window.matchMedia('(pointer: fine)').matches) {
+    document.body.classList.add('cursor-active');
+    let mx = 0, my = 0, rx = 0, ry = 0;
+
+    document.addEventListener('mousemove', e => {
+      mx = e.clientX;
+      my = e.clientY;
+      dot.style.transform = `translate(${mx - 5}px, ${my - 5}px)`;
     });
-  });
 
-  closeBtns.forEach(btn => {
-    btn.addEventListener('click', () => {
-      btn.closest('.modal').classList.remove('open');
+    const animateRing = () => {
+      rx += (mx - rx) * .12;
+      ry += (my - ry) * .12;
+      ring.style.transform = `translate(${rx - 19}px, ${ry - 19}px)`;
+      requestAnimationFrame(animateRing);
+    };
+    animateRing();
+
+    $$('a, button, .proj-card, .g-viewport').forEach(el => {
+      el.addEventListener('mouseenter', () => document.body.classList.add('cursor-hover'));
+      el.addEventListener('mouseleave', () => document.body.classList.remove('cursor-hover'));
     });
-  });
+  }
 
-  window.addEventListener('click', (e) => {
-    if (e.target.classList.contains('modal')) {
-      e.target.classList.remove('open');
-    }
-  });
+  /* ==================================================
+     PARTICLES
+  ================================================== */
+  (function initParticles() {
+    const canvas = $('#particles-canvas');
+    const ctx = canvas.getContext('2d');
+    let W, H, particles;
 
-  // Gallery Data
-  const GALLERY_DATA = {
-    dcm65: [
-      "dcm5 (4).JPEG", "dcm5 (5).JPEG", "dcm5 (2).JPEG", "dcm5 (3).JPEG", "dcm5.JPEG"
-    ],
-    ailes: [
-      "mesure(2).png", "mesure(1).png", "mesure(3).png", "mesure.png"
-    ],
-    s2dtmf: [
-      "dtmf (4).png", "dtmf (2).png", "dtmf (3).png", "dtmf (5).png", "dtmf.png"
-    ],
-    barriere: [
-      "train(5).jpg", "train(2).jpg", "train(3).jpg", "train(4).jpg", "train.jpg"
-    ]
-  };
+    const PARTICLE_COUNT = 55;
+    const MAX_DIST = 130;
 
-  // Init Galleries
-  document.querySelectorAll('.gallery').forEach(gallery => {
-    const key = gallery.getAttribute('data-key');
-    const images = GALLERY_DATA[key];
-    if (!images || images.length === 0) return;
-
-    const viewportImg = gallery.querySelector('[data-role="image"]');
-    const thumbsContainer = gallery.querySelector('[data-role="thumbs"]');
-    const counter = gallery.querySelector('[data-role="counter"]');
-    let currentIndex = 0;
-
-    const render = () => {
-      viewportImg.src = images[currentIndex];
-      counter.textContent = `${currentIndex + 1} / ${images.length}`;
-      Array.from(thumbsContainer.children).forEach((thumb, idx) => {
-        thumb.classList.toggle('active', idx === currentIndex);
-      });
+    const resize = () => {
+      W = canvas.width = window.innerWidth;
+      H = canvas.height = window.innerHeight;
     };
 
-    // Create thumbnails
-    images.forEach((src, idx) => {
-      const img = document.createElement('img');
-      img.src = src;
-      img.addEventListener('click', () => {
-        currentIndex = idx;
-        render();
+    const makeParticle = () => ({
+      x: Math.random() * W,
+      y: Math.random() * H,
+      vx: (Math.random() - .5) * .35,
+      vy: (Math.random() - .5) * .35,
+      r: Math.random() * 2 + 1
+    });
+
+    const init = () => {
+      resize();
+      particles = Array.from({ length: PARTICLE_COUNT }, makeParticle);
+    };
+
+    const getColor = () => {
+      const isDark = root.getAttribute('data-theme') !== 'light';
+      return isDark ? 'rgba(59,130,246,' : 'rgba(37,99,235,';
+    };
+
+    const draw = () => {
+      ctx.clearRect(0, 0, W, H);
+      const col = getColor();
+
+      particles.forEach(p => {
+        p.x += p.vx;
+        p.y += p.vy;
+        if (p.x < 0 || p.x > W) p.vx *= -1;
+        if (p.y < 0 || p.y > H) p.vy *= -1;
+
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+        ctx.fillStyle = col + '0.5)';
+        ctx.fill();
       });
-      thumbsContainer.appendChild(img);
+
+      for (let i = 0; i < particles.length; i++) {
+        for (let j = i + 1; j < particles.length; j++) {
+          const dx = particles[i].x - particles[j].x;
+          const dy = particles[i].y - particles[j].y;
+          const d = Math.sqrt(dx * dx + dy * dy);
+          if (d < MAX_DIST) {
+            ctx.beginPath();
+            ctx.moveTo(particles[i].x, particles[i].y);
+            ctx.lineTo(particles[j].x, particles[j].y);
+            ctx.strokeStyle = col + (0.2 * (1 - d / MAX_DIST)).toFixed(2) + ')';
+            ctx.lineWidth = .6;
+            ctx.stroke();
+          }
+        }
+      }
+
+      requestAnimationFrame(draw);
+    };
+
+    window.addEventListener('resize', resize);
+    init();
+    draw();
+  })();
+
+  /* ==================================================
+     SCROLL ANIMATIONS (IntersectionObserver)
+  ================================================== */
+  const revealObs = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        revealObs.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+  $$('.reveal').forEach(el => revealObs.observe(el));
+
+  /* ==================================================
+     SKILL BARS ANIMATION
+  ================================================== */
+  const barObs = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const fill = entry.target;
+        const w = fill.getAttribute('data-width');
+        setTimeout(() => { fill.style.width = w + '%'; }, 200);
+        barObs.unobserve(fill);
+      }
+    });
+  }, { threshold: 0.5 });
+
+  $$('.skill-bar-fill').forEach(el => barObs.observe(el));
+
+  /* ==================================================
+     ANIMATED COUNTERS
+  ================================================== */
+  const counterObs = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      const el = entry.target;
+      const target = parseInt(el.getAttribute('data-count'), 10);
+      const duration = 1400;
+      const start = performance.now();
+
+      const update = (now) => {
+        const elapsed = now - start;
+        const progress = Math.min(elapsed / duration, 1);
+        const eased = 1 - Math.pow(1 - progress, 3);
+        el.textContent = Math.round(eased * target);
+        if (progress < 1) requestAnimationFrame(update);
+        else el.textContent = target;
+      };
+
+      requestAnimationFrame(update);
+      counterObs.unobserve(el);
+    });
+  }, { threshold: 0.5 });
+
+  $$('.counter-val[data-count]').forEach(el => counterObs.observe(el));
+
+  /* ==================================================
+     ACTIVE NAV SECTION
+  ================================================== */
+  const sections = $$('section[id], main');
+  const navLinks = $$('.navlinks a');
+
+  const sectionObs = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const id = entry.target.getAttribute('id');
+        navLinks.forEach(a => {
+          a.classList.toggle('active', a.getAttribute('href') === '#' + id);
+        });
+      }
+    });
+  }, { rootMargin: '-30% 0px -60% 0px' });
+
+  $$('section[id]').forEach(s => sectionObs.observe(s));
+
+  /* Header scrolled style */
+  const header = $('#site-header');
+  window.addEventListener('scroll', () => {
+    header.classList.toggle('scrolled', window.scrollY > 20);
+  }, { passive: true });
+
+  /* ==================================================
+     SKILLS FILTER
+  ================================================== */
+  $$('.filter-btn[data-filter]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      $$('.filter-btn[data-filter]').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const filter = btn.getAttribute('data-filter');
+
+      $$('.skill-card').forEach(card => {
+        const show = filter === 'all' || card.getAttribute('data-category') === filter;
+        card.classList.toggle('hidden', !show);
+      });
+    });
+  });
+
+  /* ==================================================
+     PROJECTS FILTER & SEARCH
+  ================================================== */
+  const projSearch = $('#proj-search');
+  const projCards = $$('.proj-card');
+  const noResults = $('#no-results');
+  let activeFilter = 'all';
+
+  const filterProjects = () => {
+    const q = projSearch.value.trim().toLowerCase();
+    let visible = 0;
+
+    projCards.forEach(card => {
+      const cat = card.getAttribute('data-category');
+      const keywords = card.getAttribute('data-keywords') || '';
+      const title = ($('.proj-title', card) || {}).textContent || '';
+      const desc = ($('.proj-desc', card) || {}).textContent || '';
+
+      const matchFilter = activeFilter === 'all' || cat === activeFilter;
+      const matchSearch = !q
+        || title.toLowerCase().includes(q)
+        || desc.toLowerCase().includes(q)
+        || keywords.includes(q);
+
+      const show = matchFilter && matchSearch;
+      card.classList.toggle('hidden', !show);
+      if (show) visible++;
     });
 
-    // Controls
-    gallery.querySelector('[data-action="prev"]').addEventListener('click', () => {
-      currentIndex = (currentIndex - 1 + images.length) % images.length;
-      render();
+    noResults.style.display = visible === 0 ? 'block' : 'none';
+  };
+
+  $$('.filter-btn[data-proj-filter]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      $$('.filter-btn[data-proj-filter]').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      activeFilter = btn.getAttribute('data-proj-filter');
+      filterProjects();
     });
-    gallery.querySelector('[data-action="next"]').addEventListener('click', () => {
-      currentIndex = (currentIndex + 1) % images.length;
-      render();
+  });
+
+  projSearch.addEventListener('input', filterProjects);
+
+  /* ==================================================
+     GALLERY DATA
+  ================================================== */
+  const GALLERY_DATA = {
+    dcm65:   ['dcm5 (4).JPEG', 'dcm5 (5).JPEG', 'dcm5 (2).JPEG', 'dcm5 (3).JPEG', 'dcm5.JPEG'],
+    ailes:   ['mesure(2).png', 'mesure(1).png', 'mesure(3).png', 'mesure.png'],
+    s2dtmf:  ['dtmf (4).png', 'dtmf (2).png', 'dtmf (3).png', 'dtmf (5).png', 'dtmf.png'],
+    barriere:['train(5).jpg', 'train(2).jpg', 'train(3).jpg', 'train(4).jpg', 'train.jpg']
+  };
+
+  /* ==================================================
+     LIGHTBOX
+  ================================================== */
+  const lightbox = $('#lightbox');
+  const lightboxImg = $('#lightbox-img');
+  const lightboxClose = $('#lightbox-close');
+  const lightboxCounter = $('#lightbox-counter');
+  let lbImages = [], lbIndex = 0;
+
+  const openLightbox = (images, idx) => {
+    lbImages = images;
+    lbIndex = idx;
+    lightboxImg.src = images[lbIndex];
+    lightboxImg.alt = `Image ${lbIndex + 1} / ${images.length}`;
+    lightboxCounter.textContent = `${lbIndex + 1} / ${images.length}`;
+    lightbox.classList.add('open');
+    lightboxClose.focus();
+    document.body.style.overflow = 'hidden';
+  };
+
+  const closeLightbox = () => {
+    lightbox.classList.remove('open');
+    document.body.style.overflow = '';
+  };
+
+  lightboxClose.addEventListener('click', closeLightbox);
+  lightbox.addEventListener('click', e => { if (e.target === lightbox) closeLightbox(); });
+
+  document.addEventListener('keydown', e => {
+    if (!lightbox.classList.contains('open')) return;
+    if (e.key === 'Escape') closeLightbox();
+    if (e.key === 'ArrowRight') { lbIndex = (lbIndex + 1) % lbImages.length; lightboxImg.src = lbImages[lbIndex]; lightboxCounter.textContent = `${lbIndex + 1} / ${lbImages.length}`; }
+    if (e.key === 'ArrowLeft')  { lbIndex = (lbIndex - 1 + lbImages.length) % lbImages.length; lightboxImg.src = lbImages[lbIndex]; lightboxCounter.textContent = `${lbIndex + 1} / ${lbImages.length}`; }
+  });
+
+  /* ==================================================
+     GALLERY INIT
+  ================================================== */
+  $$('.gallery').forEach(gallery => {
+    const key = gallery.getAttribute('data-key');
+    const images = GALLERY_DATA[key];
+    if (!images || !images.length) return;
+
+    const imgEl = $('[data-role="image"]', gallery);
+    const thumbsEl = $('[data-role="thumbs"]', gallery);
+    const counterEl = $('[data-role="counter"]', gallery);
+    let idx = 0;
+
+    const render = () => {
+      imgEl.src = images[idx];
+      imgEl.alt = `Image ${idx + 1} du projet`;
+      counterEl.textContent = `${idx + 1} / ${images.length}`;
+      $$('img', thumbsEl).forEach((t, i) => t.classList.toggle('active', i === idx));
+    };
+
+    images.forEach((src, i) => {
+      const t = document.createElement('img');
+      t.src = src;
+      t.alt = `Vignette ${i + 1}`;
+      t.loading = 'lazy';
+      t.addEventListener('click', () => { idx = i; render(); });
+      thumbsEl.appendChild(t);
     });
 
-    render(); // Initial load
+    $('[data-action="prev"]', gallery).addEventListener('click', () => { idx = (idx - 1 + images.length) % images.length; render(); });
+    $('[data-action="next"]', gallery).addEventListener('click', () => { idx = (idx + 1) % images.length; render(); });
+
+    $('[data-role="image"]', gallery).addEventListener('click', () => openLightbox(images, idx));
+
+    render();
+  });
+
+  /* ==================================================
+     MODALS
+  ================================================== */
+  const openModal = (id) => {
+    const modal = $('#modal-' + id);
+    if (!modal) return;
+    modal.classList.add('open');
+    document.body.style.overflow = 'hidden';
+    const firstFocusable = $('button, [href], input', modal);
+    if (firstFocusable) firstFocusable.focus();
+  };
+
+  const closeModal = (modal) => {
+    modal.classList.remove('open');
+    if (!document.querySelector('.modal.open')) {
+      document.body.style.overflow = '';
+    }
+  };
+
+  $$('.proj-card').forEach(card => {
+    const activate = () => openModal(card.getAttribute('data-proj'));
+    card.addEventListener('click', activate);
+    card.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); activate(); } });
+  });
+
+  $$('[data-close]').forEach(btn => {
+    btn.addEventListener('click', () => closeModal(btn.closest('.modal')));
+  });
+
+  $$('.modal').forEach(modal => {
+    modal.addEventListener('click', e => { if (e.target === modal) closeModal(modal); });
+  });
+
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') {
+      const open = $('.modal.open');
+      if (open) closeModal(open);
+    }
   });
 </script>
 
 </body>
-
 </html>
