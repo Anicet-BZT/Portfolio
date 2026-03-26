@@ -1111,7 +1111,6 @@
       max-height: 100%;
       object-fit: contain;
       transition: transform var(--transition);
-      loading: lazy;
     }
 
     .g-viewport:hover img { transform: scale(1.02); }
@@ -1443,7 +1442,7 @@
             <span class="stat-label">Projets majeurs</span>
           </div>
           <div class="stat-item">
-            <span class="stat-num" data-count="2" data-suffix="ans">2ans</span>
+            <span class="stat-num" data-count="2" data-suffix=" ans">2 ans</span>
             <span class="stat-label">En alternance</span>
           </div>
           <div class="stat-item">
@@ -2238,8 +2237,8 @@
   document.addEventListener('keydown', e => {
     if (!lightbox.classList.contains('open')) return;
     if (e.key === 'Escape') closeLightbox();
-    if (e.key === 'ArrowRight') { lbIndex = (lbIndex + 1) % lbImages.length; lightboxImg.src = lbImages[lbIndex]; lightboxCounter.textContent = `${lbIndex + 1} / ${lbImages.length}`; }
-    if (e.key === 'ArrowLeft')  { lbIndex = (lbIndex - 1 + lbImages.length) % lbImages.length; lightboxImg.src = lbImages[lbIndex]; lightboxCounter.textContent = `${lbIndex + 1} / ${lbImages.length}`; }
+    if (e.key === 'ArrowRight') { lbIndex = (lbIndex + 1) % lbImages.length; lightboxImg.src = lbImages[lbIndex]; lightboxImg.alt = `Image ${lbIndex + 1} / ${lbImages.length}`; lightboxCounter.textContent = `${lbIndex + 1} / ${lbImages.length}`; }
+    if (e.key === 'ArrowLeft')  { lbIndex = (lbIndex - 1 + lbImages.length) % lbImages.length; lightboxImg.src = lbImages[lbIndex]; lightboxImg.alt = `Image ${lbIndex + 1} / ${lbImages.length}`; lightboxCounter.textContent = `${lbIndex + 1} / ${lbImages.length}`; }
   });
 
   /* ==================================================
