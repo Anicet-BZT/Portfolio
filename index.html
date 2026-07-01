@@ -160,6 +160,11 @@
     [data-proj="ailes"] .thumb { background-image: url('mesure(2).png'); }
     [data-proj="s2dtmf"] .thumb { background-image: url('dtmf (4).png'); }
     [data-proj="barriere"] .thumb { background-image: url('train(5).jpg'); }
+    [data-proj="deep-learning"] .thumb { background-image: url('projet_deep_learning_mgv2.jpg'); }
+    [data-proj="robot-clear"] .thumb { background-image: url('projet_robot_clear_mgv1.jpg'); }
+    [data-proj="dcm5"] .thumb { background-image: url('projet_dcm5_securite.jpg'); }
+    [data-proj="atex-mgv2"] .thumb { background-image: url('projet_atex_note.jpg'); }
+    [data-proj="fife-dmax"] .thumb { background-image: url('projet_fife_dmax.jpg'); }
 
     @media (max-width: 768px){
       .hero-grid{grid-template-columns:1fr;text-align:center}
@@ -239,6 +244,7 @@
           <span class="tag manage">Estimation des temps d'intervention</span>
           <span class="tag manage">Chiffrage / Budget</span>
           <span class="tag manage">Coordination sur ligne de production</span>
+          <span class="tag manage">PV de réception / Tests sécurité</span>
         </div>
       </article>
 
@@ -258,6 +264,8 @@
         <div class="stack">
           <span class="tag">LADDER / GRAFCET / ST (TIA Portal)</span>
           <span class="tag">Réseaux: Profinet, Modbus TCP/IP</span>
+          <span class="tag">STEP7 / S7-300</span>
+          <span class="tag">Vision Cognex</span>
           <span class="tag">Supervision IHM / Historian</span>
         </div>
       </article>
@@ -306,6 +314,57 @@
     
     <div class="grid projects">
       
+
+      <article class="card proj" data-proj="deep-learning">
+        <div class="thumb"></div>
+        <h3>Deep Learning MGV2</h3>
+        <p>Intégration d'un système de détection automatique des plis et bourrelets en fin de ligne. Communication entre un automate S7-300 sous STEP7 et un PC industriel via PROFINET, avec plusieurs DB d'échange pour les variables de contexte et les retours du système.</p>
+        <div class="proj-footer">
+          <span>Vision & PROFINET</span>
+          <span>Détails ➔</span>
+        </div>
+      </article>
+
+      <article class="card proj" data-proj="robot-clear">
+        <div class="thumb"></div>
+        <h3>Robot Clear MGV1</h3>
+        <p>Amélioration du nettoyage automatique d'une sleeve d'enduction. Passage d'un zonage trop large à 23 zones, récupération des défauts Cognex et préparation d'une logique Grafcet pour lancer un nettoyage plus précis sans étaler l'encre.</p>
+        <div class="proj-footer">
+          <span>Robotique & Grafcet</span>
+          <span>Détails ➔</span>
+        </div>
+      </article>
+
+      <article class="card proj" data-proj="dcm5">
+        <div class="thumb"></div>
+        <h3>Projet annuel DCM5</h3>
+        <p>Suivi d'un projet de modernisation sécurité sur une machine existante : migration CPU 315 vers 319, préparation de l'arrêt machine, coordination avec Actemium pour le câblage/décâblage et préparation du PV de réception final.</p>
+        <div class="proj-footer">
+          <span>Gestion projet & Safety</span>
+          <span>Détails ➔</span>
+        </div>
+      </article>
+
+      <article class="card proj" data-proj="atex-mgv2">
+        <div class="thumb"></div>
+        <h3>Adéquation ATEX MGV2</h3>
+        <p>Vérification d'une boucle de sécurité intrinsèque sur MGV2. Renseignement du tableur interne, conversions de données, vérification tension/courant/puissance/câbles et rédaction d'une note technique de justification.</p>
+        <div class="proj-footer">
+          <span>ATEX & Sécurité intrinsèque</span>
+          <span>Détails ➔</span>
+        </div>
+      </article>
+
+      <article class="card proj" data-proj="fife-dmax">
+        <div class="thumb"></div>
+        <h3>Étude électrique FIFE D-MAX</h3>
+        <p>Étude électrique pour l'intégration d'un système de guidage de bande. Le projet est actuellement en attente, mais l'étude et la préparation matérielle ont permis d'anticiper le raccordement du contrôleur, des capteurs et de l'actionneur.</p>
+        <div class="proj-footer">
+          <span>Étude électrique</span>
+          <span>Détails ➔</span>
+        </div>
+      </article>
+
       <article class="card proj" data-proj="dcm65">
         <div class="thumb"></div>
         <h3>Retrofit Ligne d'Enduction (DCM65)</h3>
@@ -352,6 +411,210 @@
 
 <div id="modals">
   
+
+  <div class="modal" id="modal-deep-learning">
+    <div class="dialog">
+      <div class="modal-header">
+        <h3>Deep Learning MGV2 — Détection de défauts</h3>
+        <button class="close-btn" data-close>X</button>
+      </div>
+      <div class="modal-body">
+        <h4>🎯 Objectif du projet</h4>
+        <ul>
+          <li>Détecter automatiquement les défauts de surfaçage en fin de ligne, principalement les plis et les bourrelets au niveau de l'enrouleur.</li>
+          <li>Rendre l'information exploitable par la production grâce à une alerte opérateur et au stockage des images NOK.</li>
+          <li>Préparer une base de données utile pour la qualité et les futures évolutions du système.</li>
+        </ul>
+
+        <h4>⚙️ Travail réalisé</h4>
+        <ul>
+          <li><strong>Communication :</strong> échanges entre l'automate S7-300 sous STEP7 et le PC industriel via PROFINET.</li>
+          <li><strong>Automatisme :</strong> mise en place et vérification de plusieurs DB d'échange pour les variables en lecture/écriture.</li>
+          <li><strong>Intégration :</strong> prise en compte des informations machine nécessaires au logiciel, comme les états de fonctionnement, la vitesse et les phases de bascule.</li>
+          <li><strong>Terrain :</strong> préparation de la mise en service avec l'intégrateur et validation des échanges automate ↔ PC.</li>
+        </ul>
+
+        <h4>✅ Apport</h4>
+        <ul>
+          <li>La solution apporte une détection plus rapide qu'un contrôle uniquement visuel.</li>
+          <li>Elle conserve une preuve image lorsqu'un défaut est détecté, ce qui aide la production et la qualité.</li>
+          <li>Le projet m'a permis de travailler sur une intégration complète : électricité, réseau industriel, automate et logiciel PC.</li>
+        </ul>
+
+        <div class="gallery" data-key="deep-learning">
+          <div class="g-viewport"><img src="" data-role="image" alt="Image projet Deep Learning"></div>
+          <div class="g-controls">
+            <button class="g-btn" data-action="prev">‹ Précédent</button>
+            <span class="muted" data-role="counter">1 / X</span>
+            <button class="g-btn" data-action="next">Suivant ›</button>
+          </div>
+          <div class="g-thumbs" data-role="thumbs"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal" id="modal-robot-clear">
+    <div class="dialog">
+      <div class="modal-header">
+        <h3>Robot Clear MGV1 — Nettoyage automatique de sleeve</h3>
+        <button class="close-btn" data-close>X</button>
+      </div>
+      <div class="modal-body">
+        <h4>🎯 Objectif du projet</h4>
+        <ul>
+          <li>Améliorer la précision du nettoyage du cylindre/sleeve afin de réduire les défauts liés à l'encrassement.</li>
+          <li>Éviter que le robot nettoie une zone trop large et étale l'encre au lieu de corriger le défaut.</li>
+          <li>Rapprocher le mode automatique du mode manuel point par point utilisé par les opérateurs.</li>
+        </ul>
+
+        <h4>⚙️ Travail réalisé</h4>
+        <ul>
+          <li><strong>Zonage :</strong> passage de 10 zones à 23 zones pour rendre le nettoyage plus ciblé.</li>
+          <li><strong>Vision :</strong> récupération des défauts détectés par la vision Cognex, avec un bit par zone et une information de priorité.</li>
+          <li><strong>Électricité :</strong> ajout d'un îlot ET200SP pour récupérer les nouvelles entrées disponibles sur le réseau machine.</li>
+          <li><strong>Automatisme :</strong> préparation d'une logique de type Grafcet pour sélectionner automatiquement la bonne zone et déclencher le cycle de nettoyage.</li>
+        </ul>
+
+        <h4>✅ Apport</h4>
+        <ul>
+          <li>Le robot peut être piloté à partir d'une information plus précise issue de la vision.</li>
+          <li>La solution prépare un fonctionnement automatique plus fiable et plus proche du besoin réel de production.</li>
+          <li>Le projet combine étude électrique, intégration réseau, logique automate et contraintes terrain.</li>
+        </ul>
+
+        <div class="gallery" data-key="robot-clear">
+          <div class="g-viewport"><img src="" data-role="image" alt="Image projet Robot Clear"></div>
+          <div class="g-controls">
+            <button class="g-btn" data-action="prev">‹ Précédent</button>
+            <span class="muted" data-role="counter">1 / X</span>
+            <button class="g-btn" data-action="next">Suivant ›</button>
+          </div>
+          <div class="g-thumbs" data-role="thumbs"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal" id="modal-dcm5">
+    <div class="dialog">
+      <div class="modal-header">
+        <h3>Projet annuel DCM5 — Modernisation sécurité</h3>
+        <button class="close-btn" data-close>X</button>
+      </div>
+      <div class="modal-body">
+        <h4>🎯 Objectif du projet</h4>
+        <ul>
+          <li>Moderniser une machine existante en remplaçant des éléments obsolètes et en fiabilisant l'architecture.</li>
+          <li>Préparer une migration CPU 315 vers CPU 319 et suivre l'évolution de l'installation.</li>
+          <li>Organiser les essais finaux de sécurité avec un PV de réception complet.</li>
+        </ul>
+
+        <h4>⚙️ Mon rôle</h4>
+        <ul>
+          <li><strong>Gestion projet :</strong> suivi du planning, préparation des phases d'arrêt et coordination des actions.</li>
+          <li><strong>Coordination :</strong> suivi des travaux de câblage/décâblage réalisés par Actemium.</li>
+          <li><strong>Validation :</strong> préparation des tests sécurité et fonctionnels à reprendre dans le PV de réception final.</li>
+          <li><strong>Important :</strong> je n'ai pas réalisé le programme automate ni l'écran opérateur sur ce projet ; mon rôle principal est le suivi technique et organisationnel.</li>
+        </ul>
+
+        <h4>✅ Apport</h4>
+        <ul>
+          <li>Cette mission m'a permis de travailler sur la partie organisationnelle d'un projet industriel, pas seulement sur l'exécution technique.</li>
+          <li>Elle m'a aussi confronté à la gestion des intervenants, aux contraintes d'arrêt machine et à la préparation des validations finales.</li>
+        </ul>
+
+        <div class="gallery" data-key="dcm5">
+          <div class="g-viewport"><img src="" data-role="image" alt="Image projet DCM5"></div>
+          <div class="g-controls">
+            <button class="g-btn" data-action="prev">‹ Précédent</button>
+            <span class="muted" data-role="counter">1 / X</span>
+            <button class="g-btn" data-action="next">Suivant ›</button>
+          </div>
+          <div class="g-thumbs" data-role="thumbs"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal" id="modal-atex-mgv2">
+    <div class="dialog">
+      <div class="modal-header">
+        <h3>Adéquation ATEX MGV2 — Sécurité intrinsèque</h3>
+        <button class="close-btn" data-close>X</button>
+      </div>
+      <div class="modal-body">
+        <h4>🎯 Objectif du projet</h4>
+        <ul>
+          <li>Vérifier qu'une boucle avec capteur PILZ, câble terrain, barrière intrinsèque Pepperl+Fuchs et entrée API reste compatible avec une zone ATEX.</li>
+          <li>Justifier techniquement l'utilisation du capteur dans l'architecture retenue.</li>
+          <li>Préparer un document clair pouvant être utilisé dans un dossier de conformité.</li>
+        </ul>
+
+        <h4>⚙️ Travail réalisé</h4>
+        <ul>
+          <li><strong>Calcul :</strong> renseignement d'un tableur interne avec les caractéristiques électriques de la boucle.</li>
+          <li><strong>Vérification :</strong> comparaison des limites de tension, courant, puissance, capacité et inductance.</li>
+          <li><strong>Analyse :</strong> utilisation de valeurs majorantes lorsque les données câble n'étaient pas directement exploitables.</li>
+          <li><strong>Documentation :</strong> rédaction d'une note technique complète pour expliquer et justifier la conformité.</li>
+        </ul>
+
+        <h4>✅ Apport</h4>
+        <ul>
+          <li>La boucle a été validée avec une marge importante par rapport aux longueurs maximales admissibles.</li>
+          <li>Cette étude montre une compétence de vérification et de dérisquage avant validation externe.</li>
+        </ul>
+
+        <div class="gallery" data-key="atex-mgv2">
+          <div class="g-viewport"><img src="" data-role="image" alt="Image projet ATEX MGV2"></div>
+          <div class="g-controls">
+            <button class="g-btn" data-action="prev">‹ Précédent</button>
+            <span class="muted" data-role="counter">1 / X</span>
+            <button class="g-btn" data-action="next">Suivant ›</button>
+          </div>
+          <div class="g-thumbs" data-role="thumbs"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal" id="modal-fife-dmax">
+    <div class="dialog">
+      <div class="modal-header">
+        <h3>FIFE D-MAX — Étude électrique de guidage de bande</h3>
+        <button class="close-btn" data-close>X</button>
+      </div>
+      <div class="modal-body">
+        <h4>🎯 Objectif du projet</h4>
+        <ul>
+          <li>Préparer l'intégration d'un système FIFE D-MAX pour corriger automatiquement les dérives latérales de bande.</li>
+          <li>Maintenir le film centré ou aligné sur un bord afin de limiter les défauts de coupe, d'impression ou d'enroulement.</li>
+        </ul>
+
+        <h4>⚙️ Travail réalisé</h4>
+        <ul>
+          <li><strong>Étude électrique :</strong> préparation du raccordement du contrôleur D-MAX, des capteurs et de l'actionneur.</li>
+          <li><strong>Préparation chantier :</strong> étude de l'implantation et des besoins électriques avant mise en service.</li>
+          <li><strong>État actuel :</strong> le projet est pour l'instant en attente/annulé, donc aucune validation fonctionnelle finale n'a encore été réalisée.</li>
+        </ul>
+
+        <h4>✅ Apport</h4>
+        <ul>
+          <li>Cette trace reste intéressante pour montrer une étape d'étude et de préparation, même si le projet n'a pas été mené jusqu'à la mise en service.</li>
+        </ul>
+
+        <div class="gallery" data-key="fife-dmax">
+          <div class="g-viewport"><img src="" data-role="image" alt="Image projet FIFE D-MAX"></div>
+          <div class="g-controls">
+            <button class="g-btn" data-action="prev">‹ Précédent</button>
+            <span class="muted" data-role="counter">1 / X</span>
+            <button class="g-btn" data-action="next">Suivant ›</button>
+          </div>
+          <div class="g-thumbs" data-role="thumbs"></div>
+        </div>
+      </div>
+    </div>
+  </div>
   <div class="modal" id="modal-dcm65">
     <div class="dialog">
       <div class="modal-header">
@@ -532,6 +795,21 @@
 
   // Gallery Data
   const GALLERY_DATA = {
+    "deep-learning": [
+      "projet_deep_learning_mgv2.jpg", "projet_deep_learning_architecture.jpg", "projet_deep_learning_profinet.jpg"
+    ],
+    "robot-clear": [
+      "projet_robot_clear_mgv1.jpg", "projet_robot_clear_zones.jpg", "projet_robot_clear_et200sp.jpg"
+    ],
+    "dcm5": [
+      "projet_dcm5_securite.jpg", "projet_dcm5_planning.jpg", "projet_dcm5_gantt.jpg", "dcm5 (2).JPEG", "dcm5 (3).JPEG"
+    ],
+    "atex-mgv2": [
+      "projet_atex_note.jpg", "projet_atex_calcul.jpg", "projet_atex_conclusion.jpg"
+    ],
+    "fife-dmax": [
+      "projet_fife_dmax.jpg"
+    ],
     dcm65: [
       "dcm5 (4).JPEG", "dcm5 (5).JPEG", "dcm5 (2).JPEG", "dcm5 (3).JPEG", "dcm5.JPEG"
     ],
